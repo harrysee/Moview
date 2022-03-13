@@ -5,7 +5,7 @@
     @import url("/static/css/signup.css");
     </style>
 <div class="wrap">
-        <h1>환영합니다!!</h1>
+        <h1 style="margin-top: 100px; width:10em">환영합니다!!</h1>
         <form method="post" class="signup-form" action="{% url 'common:signup' %}">
             {% csrf_token %}
             {% include "form_errors.html" %}

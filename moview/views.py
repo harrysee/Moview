@@ -12,3 +12,9 @@ def index(request):
     # moview 데이터를 moview.index.html에 적용하여 HTML 리턴함
     context = {'mlist' : mlist}
     return render(request, 'moview/index.html',context)
+
+def addmovie(request):
+    mlist = Moviews.objects.order_by('-viewdate')
+    # moview 데이터를 moview.index.html에 적용하여 HTML 리턴함
+    context = {'mlist': mlist}
+    return render(request, 'moview/add.html',context)

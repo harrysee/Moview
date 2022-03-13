@@ -1,67 +1,154 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <style type='text/css'>
-    @import url("/static/css/style.css");
-    </style>
-<span class="logo">MOVIEW 🙎‍♂️</span>
-    <div class="login-box">
-        {% if user.is_authenticated %}
-            <a href="{% url 'common:logout' %}" style="text-decoration: none;" class="log in">{{ user.username }} 로그아웃</a>
-        {% else %}
-            <a href="{% url 'common:login' %}" style="text-decoration: none;" class="log in"> 로그인</a>
-        {% endif %}
-    </div>
-    <section>
-        <!-- 위에 타이틀 사진 -->
-        <div class="start-page" style="background-image: url('/static/img/boss.jpg');">
-            <input type="text" placeholder=" 영화대사 속에 담긴 당신을" size="40" class="input search">
-            <img class='next_btn' src="/static/img/next_btn.png" width="50" height="50">
-        </div>
-        <h1 class="name">MOVIES VIEW</h1>
-
-        <button class="btn view" data-key="0">COLLECTION</button>
-        <div class="container _view">
-            {% if mlist %}
-                {% for movie in mlist %}
-                    <!-- 영화 아이템들 넣기 (css에서 grid 사용)-->
-                    <div class="item" style="background-image: url('img/test.jpg');">
-                        <!-- css에서 백그라운드 이미지 넣기 -->
-                        <span class="text">{{ movie.moviename }}</span>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-
-        <button class="btn upload" data-key="1">ADD</button>
-        <div class="container _upload">
-            <!-- 추가 창 만들기 (이미지/제목인풋/날짜인풋/소감인풋/명대사인풋/저장하기/취소하기) -->
-            <div class="input_movies">
-                <div class="upload_img">이미지</div>
-                <ul class="input_list" style="list-style: none;" >
-                    <li><span class="input-text t-name">제목</span><input type="text" name="name" id="name" class="upload-input up-name"></li>
-                    <li><span class="input-text t-field">장르</span>
-                        <input type="radio" name="field" id="name" class="upload-radio up-field">판타지
-                        <input type="radio" name="field" id="name" class="upload-radio up-field">로맨스
-                        <input type="radio" name="field" id="name" class="upload-radio up-field">액션</li>
-                    <li><span class="input-text t-command">명대사</span><input type="text" name="name" id="name" class="upload-input up-command"></li>
-                    <li><span class="input-text t-date">날짜</span><input type="text" name="name" id="name" class="upload-input up-date" ></li>
-                    <li><span class="input-text t-score">별점</span><input type="text" name="name" id="name" class="upload-input score"></li>
-                    <li><span class="input-text t-record">감상일기</span><textarea rows="5" cols="50" class="upload-input up-record"></textarea></li>
-                </ul>
-
+    <!-- Main -->
+        <div id="main" style="padding-left: 70px">
+            <div class="inner">
+                <header>
+                    <h1>Movie View _영화를 다시 그리다.<br />
+                    add your line in movies : <a href="http://html5up.net"> Add Story</a>.</h1>
+                    <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+                </header>
+                <section class="tiles">
+                    <article class="style1">
+                        <span class="image">
+                            <img src="/static/images/pic01.jpg" alt="sk" />
+                        </span>
+                        <a href="{% url 'moview:index' %}">
+                            <h2>Magna</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style2">
+                        <span class="image">
+                            <img src="/static/images/pic01.jpg" alt="" />
+                        </span>
+                        <a href="#">
+                            <h2>Lorem</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style3">
+                        <span class="image">
+                            <img src="/static/images/pic03.jpg" alt="" />
+                        </span>
+                        <a href="#">
+                            <h2>Feugiat</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style4">
+                        <span class="image">
+                            <img src="images/pic04.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Tempus</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style5">
+                        <span class="image">
+                            <img src="images/pic05.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Aliquam</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style6">
+                        <span class="image">
+                            <img src="images/pic06.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Veroeros</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style2">
+                        <span class="image">
+                            <img src="images/pic07.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Ipsum</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style3">
+                        <span class="image">
+                            <img src="images/pic08.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Dolor</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style1">
+                        <span class="image">
+                            <img src="images/pic09.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Nullam</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style5">
+                        <span class="image">
+                            <img src="images/pic10.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Ultricies</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style6">
+                        <span class="image">
+                            <img src="images/pic11.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Dictum</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="style4">
+                        <span class="image">
+                            <img src="images/pic12.jpg" alt="" />
+                        </span>
+                        <a href="generic.html">
+                            <h2>Pretium</h2>
+                            <div class="content">
+                                <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                            </div>
+                        </a>
+                    </article>
+                </section>
             </div>
-            <button class="upload-submit">추가</button>
         </div>
 
-        <button class="btn choose" data-key="2">TODAY LINE</button>
-        <div class="container _choose">
-            <!-- 랜덤박스 이미지 하나넣기 -->
-            <div class="random-box" style="background-image: url('img/camera.png');">random movies command to YOU!!</div>
-            <div class="container result">
-                <!-- 영화 랜덤 결과 나왔을때 결과화면 가장 중간 -->
+    <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
             </div>
-        </div>
-    </section>
-    <script src="{% static 'js/main.js' %}"></script>
+        </footer>
 {% endblock %}

@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('moview/', include('moview.urls')),
     path('common/', include('common.urls')),
+    path('accounts/profile/', views.index),
     path('', views.index, name='index'),  # '/'에 해당되는 path
 ]
 if settings.DEBUG:

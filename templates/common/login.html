@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-{% load static %}
 {% block content %}
     <style type='text/css'>
     @import url("/static/css/login.css");
     </style>
     <div class="wrap">
-        <a href="{% url 'moview:index' %}" style="text-decoration: none; color: black;"><h1>MOVIEW</h1></a>
+        <a href="{% url 'moview:index' %}" style="text-decoration: none; color: black; width: 200px; align-self: center"><h1>MOVIEW</h1></a>
         <form method="post" class="login_form" action="{% url 'common:login' %}">
             {% csrf_token %}
             {% include "form_errors.html" %}
             <input type="text" name="username" id="username" class="input id" placeholder="아이디" value="{{ form.username.value|default_if_none:'' }}">
             <input type="password" name="password" id="password" class="input pw" placeholder="비밀번호" value="{{ form.password.value|default_if_none:'' }}">
-            <button class="submit">로그인</button>
+            <button class="submit" style="border-radius: 40px; height: 45px; text-align: center">로그인</button>
         </form>
-        <a href="{% url 'common:signup' %}" class="sign-up">-> 회원가입 하러가기</a>
+        <a href="{% url 'common:signup' %}" style="text-decoration: none; align-self: center; " class="sign-up">-> 회원가입 하러가기</a>
     </div>
 {% endblock %}

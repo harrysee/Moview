@@ -2583,7 +2583,7 @@ input, select, textarea {
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
 			width: calc(33.33333% - 2.5em);
-			margin: 2.5em 0 0 2.5em;
+			margin: 1.0em 0 0 1.0em;
 		}
 
 			.tiles article > .image {
@@ -2759,7 +2759,6 @@ input, select, textarea {
 			-webkit-transform: scale(0.9);
 			-ms-transform: scale(0.9);
 			transform: scale(0.9);
-			opacity: 0;
 		}
 
 		body.is-touch .tiles article .content {

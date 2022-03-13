@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section style="margin-left: 300px; margin-right: 300px; margin-top: 30px;">
+        <h2>영화일기 추가하기</h2>
+        <form method="post" action="#">
+            <div class="row gtr-uniform">
+                <div class="col-6 col-12-xsmall">
+                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="제목" />
+                </div>
+                <div class="col-6 col-12-xsmall">
+                    <input type="email" name="demo-email" id="demo-email" value="" placeholder="영화 본 날짜(20200810)" />
+                </div>
+                <div class="col-12">
+                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="영화 속 감명깊던 대사" />
+                </div>
+                <div class="col-4 col-12-small">
+                    <input type="radio" id="demo-priority-fan" name="demo-priority" checked>
+                    <label for="demo-priority-fan">판타지</label>
+                </div>
+                <div class="col-4 col-12-small">
+                    <input type="radio" id="demo-priority-romans" name="demo-priority">
+                    <label for="demo-priority-romans">로맨스</label>
+                </div>
+                <div class="col-4 col-12-small">
+                    <input type="radio" id="demo-priority-act" name="demo-priority">
+                    <label for="demo-priority-act">액션</label>
+                </div>
+                <div class="col-4 col-12-small">
+                    <input type="radio" id="demo-priority-hore" name="demo-priority">
+                    <label for="demo-priority-hore">스릴러</label>
+                </div>
+                <div class="col-4 col-12-small">
+                    <input type="radio" id="demo-priority-hilling" name="demo-priority">
+                    <label for="demo-priority-hilling">힐링</label>
+                </div>
+                <div class="col-4 col-12-small">
+                    <input type="radio" id="demo-priority-other" name="demo-priority">
+                    <label for="demo-priority-other">기타</label>
+                </div>
+                <div class="col-12">
+                    <textarea name="demo-message" id="demo-message" placeholder="Enter Your Movie Story.." rows="5"></textarea>
+                </div>
+                <div class="col-12">
+                    <ul class="actions">
+                        <li><input type="submit" value="Save Story" class="primary" /></li>
+                        <li><input type="reset" value="Reset" /></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </section>
+{% endblock %}
