@@ -1,7 +1,7 @@
 {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}
-            <div class="errorlist">
+            <div class="errorlist" style="background: #efb3ae; border-radius: 30px; padding-left: 20px; margin-bottom: 10px">
                 <strong>{{ field.label }}</strong>
                 {{ error }}
             </div>

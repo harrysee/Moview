@@ -7,9 +7,9 @@
 <span class="logo">MOVIEW 🙎‍♂️</span>
     <div class="login-box">
         {% if user.is_authenticated %}
-            <a href="{% url 'common:logout' %}" style="text-decoration: none;" class="log in">로그아웃</a>
+            <a href="{% url 'common:logout' %}" style="text-decoration: none;" class="log in">{{ user.username }} 로그아웃</a>
         {% else %}
-            <a href="{% url 'common:login' %}" style="text-decoration: none;" class="log in">{{ user.username }} 로그인</a>
+            <a href="{% url 'common:login' %}" style="text-decoration: none;" class="log in"> 로그인</a>
         {% endif %}
     </div>
     <section>

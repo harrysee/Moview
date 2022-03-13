@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style type="text/css">
+    @import url("/static/css/signup.css");
+    </style>
+<div class="wrap">
+        <h1>환영합니다!!</h1>
+        <form method="post" class="signup-form" action="{% url 'common:signup' %}">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <span class="input-text">이메일</span>
+            <input type="text" name="email" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+
+             <span class="input-text">사용자 id</span>
+            <input type="text" name="username" class="input-id" placeholder="아이디를 입력하세요" value="{{ form.username.value|default_if_none:''}}">
+
+            <span class="input-text">비밀번호</span>
+            <input type="password" name="password1" class="input-pw"  placeholder="비밀번호 5자 이상입니다." value="{{ form.password1.value|default_if_none:'' }}">
+
+            <span class="input-text">비밀번호 확인</span>
+            <input type="password" name="password2"  class="input-pw-check"  placeholder="비밀번호 확인" value="{{ form.password2.value|default_if_none:'' }}">
+            <button type="submit">가입하기</button>
+        </form>
+
+</div>
+{% endblock %}

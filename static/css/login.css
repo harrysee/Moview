@@ -48,10 +48,11 @@ body{
     font-size: 12px;
     font-weight: bolder;
     cursor: pointer;
-    align-self: flex-start;
     margin-top: 5px;
     color: rgb(142, 143, 179);
-    margin-left: 30px;
+    align-items: center;
+    margin-left: 150px;
 }
+
 
 
