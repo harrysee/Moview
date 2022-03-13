@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% block content %}
+    <style type='text/css'>
+    @import url("/static/css/style.css");
+    </style>
 <span class="logo">MOVIEW 🙎‍♂️</span>
     <div class="login-box">
-        <a href="../common/login.html" style="text-decoration: none;" class="log in">로그인</a>
-        <span class="log out">로그아웃</span>
+        {% if user.is_authenticated %}
+            <a href="{% url 'common:logout' %}" style="text-decoration: none;" class="log in">로그아웃</a>
+        {% else %}
+            <a href="{% url 'common:login' %}" style="text-decoration: none;" class="log in">{{ user.username }} 로그인</a>
+        {% endif %}
     </div>
     <section>
         <!-- 위에 타이틀 사진 -->

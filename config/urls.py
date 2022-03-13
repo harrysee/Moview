@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('moview/', include('moview.urls')),
+    path('common/', include('common.urls')),
+    path('', views.index, name='index'),  # '/'에 해당되는 path
 ]
 if settings.DEBUG:
     # static이라는 것을 가져와서 사용할 것인데,
