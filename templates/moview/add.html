@@ -8,7 +8,6 @@
             window.location.href = "{% url 'common:login' %}";  // url 이동
         </script>
     {% endif %}
-
     <section style="margin-left: 200px; margin-right: 300px; ">
         <h2>영화일기를 그리다.</h2>
 {#        enctype="multipart/form-data" 이거 없으면 이미지 안됨 #}
@@ -26,7 +25,6 @@
                         <input type="file" name="moviewimg" id="demo-img" class="upload-hidden" value="" placeholder="영화 속 장면" />
                     </div>
                 </div>
-
                 <div class="col-12">
                     <input type="text" name="moviewline" id="demo-line" value="" placeholder="영화 속 감명깊던 대사" />
                 </div>

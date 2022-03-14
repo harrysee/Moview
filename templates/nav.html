@@ -8,7 +8,7 @@
                     <nav>
                         <ul>
                             <li><a href="{% url 'moview:index' %}">movies </a>  | </li>
-                            <li><a href="{% url 'moview:create' %}">add </a>  | </li>
+                            <li><a href="{% url 'moview:create' %}">create </a>  | </li>
 {#                            로그인 되어있는지 검사하기 #}
                             {% if user.is_authenticated %}
                                 <li><a href="{% url 'common:logout' %}">logout </a> </li>

@@ -2,22 +2,33 @@
 {% load static %}
 {% block content %}
     <!-- Main -->
-        <div id="main" style="padding-left: 70px">
-            <div class="inner">
-                <header>
-                    <h1>Movie View _영화를 다시 그리다.<br />
-                    add your line in movies : <a href="http://html5up.net"> Add Story</a>.</h1>
-                    <p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
-                </header>
-                <section class="tiles">
-{#                    영화리스트 for문 돌리기 #}
-                    {% for movie,style in multilist %}
+    <div id="main" style="padding-left: 70px; margin-top: -10em">
+        <div class="inner">
+            <header id="header">
+                 <!-- Logo -->
+                <a href="index.html" class="logo">
+                    <span class="symbol"><img src="/static/images/logo.svg" alt="" /></span><span class="title">Moview</span>
+                </a>
+                <h1>Movie View _영화를 다시 그리다.<br/>
+                    add your line in movies : <a href="http://html5up.net"> Choose Story</a>.</h1>
+                <p>영화 속 나의 이야기를 알아가는 시간 .
+                    누군가의 영화 이야기를 통해 나만의 영화를 찾아가는 시간 .</p>
+                <form action="{% url 'moview:index' %}" class="searchForm"
+                      style="display: flex; align-items: flex-end; margin-right: 8em; justify-content: flex-end; margin-top:-95px; flex-direction: row">
+                    <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}"
+                           style="width: 15em; " size="5">
+                    <button type="submit" class="searchbtn" style="width: 6em; height: 3em">검색</button>
+                </form>
+            </header>
+            <section class="tiles">
+                {#                    영화리스트 for문 돌리기 #}
+                {% for movie,style in multilist %}
                     <article class="{{ style }}">
                         <span class="image">
                             {% if movie.moviewimg %}
-                                <img src="{{ movie.moviewimg.url }}" alt="영화이미지" />
+                                <img src="{{ movie.moviewimg.url }}" alt="영화이미지"/>
                             {% else %}
-                                <img src="/static/images/pic01.jpg" alt="영화이미지" />
+                                <img src="/static/images/pic01.jpg" alt="영화이미지"/>
                             {% endif %}
                         </span>
                         <a href="{% url 'moview:detail' movie.id %}">
@@ -27,14 +38,14 @@
                             </div>
                         </a>
                     </article>
-                    {% endfor %}
-                </section>
-            </div>
+                {% endfor %}
+            </section>
         </div>
+    </div>
 
     <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-            </div>
-        </footer>
+    <footer id="footer">
+        <div class="inner">
+        </div>
+    </footer>
 {% endblock %}
