@@ -16,11 +16,11 @@ def index(request):
 def add_movie(request):
     # 뮤비 추가
     if request.method == 'POST':
-        form = MoviewForm(request.POST)
-        if form.is_valid():
-            movie = form.save()
+        movie = MoviewForm(request.POST)
+        if movie.is_valid():
+            movie = movie.save(commit=True)
             return redirect('moview:index')
     else:
-        form = MoviewForm()
-    context = {'form':form}
+        movie = MoviewForm()
+    context = {'form':movie}
     return render(request, 'moview/add.html',context)
