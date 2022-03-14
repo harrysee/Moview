@@ -3,43 +3,45 @@
 {% block content %}
     <section style="margin-left: 300px; margin-right: 300px; margin-top: 30px;">
         <h2>영화일기 추가하기</h2>
-        <form method="post" action="#">
+        <form method="post" class="add_movie" action="{% url 'moview:create'  %}">
+            {% csrf_token %}
+            {% include 'form_add_errors.html' %}
             <div class="row gtr-uniform">
                 <div class="col-6 col-12-xsmall">
-                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="제목" />
+                    <input type="text" name="moviename" id="demo-name" value="" placeholder="제목" />
                 </div>
                 <div class="col-6 col-12-xsmall">
-                    <input type="email" name="demo-email" id="demo-email" value="" placeholder="영화 본 날짜(20200810)" />
+                    <input type="text" name="viewdate" id="demo-email" value="" placeholder="영화 본 날짜(20200810)" />
                 </div>
                 <div class="col-12">
-                    <input type="text" name="demo-name" id="demo-name" value="" placeholder="영화 속 감명깊던 대사" />
+                    <input type="text" name="moviewline" id="demo-name" value="" placeholder="영화 속 감명깊던 대사" />
                 </div>
                 <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-fan" name="demo-priority" checked>
+                    <input type="radio" id="demo-priority-fan" name="category" checked>
                     <label for="demo-priority-fan">판타지</label>
                 </div>
                 <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-romans" name="demo-priority">
+                    <input type="radio" id="demo-priority-romans" name="category">
                     <label for="demo-priority-romans">로맨스</label>
                 </div>
                 <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-act" name="demo-priority">
+                    <input type="radio" id="demo-priority-act" name="category">
                     <label for="demo-priority-act">액션</label>
                 </div>
                 <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-hore" name="demo-priority">
+                    <input type="radio" id="demo-priority-hore" name="category">
                     <label for="demo-priority-hore">스릴러</label>
                 </div>
                 <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-hilling" name="demo-priority">
+                    <input type="radio" id="demo-priority-hilling" name="category">
                     <label for="demo-priority-hilling">힐링</label>
                 </div>
                 <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-other" name="demo-priority">
+                    <input type="radio" id="demo-priority-other" name="category">
                     <label for="demo-priority-other">기타</label>
                 </div>
                 <div class="col-12">
-                    <textarea name="demo-message" id="demo-message" placeholder="Enter Your Movie Story.." rows="5"></textarea>
+                    <textarea name="story" id="demo-message" placeholder="Enter Your Movie Story.." rows="5"></textarea>
                 </div>
                 <div class="col-12">
                     <ul class="actions">

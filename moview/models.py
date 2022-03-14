@@ -6,7 +6,7 @@ class Moviews(models.Model):
     category = models.IntegerField(null=False)
     moviewline = models.CharField(max_length=50)
     viewdate = models.DateTimeField()
-    diary = models.TextField()
+    story = models.TextField()
     moviewimg = models.ImageField(blank=True,null=True)
 
     def __str__(self):
