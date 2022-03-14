@@ -57,5 +57,20 @@ def movie_delete(request: object, movie_id):
     return redirect('moview:index')
 
 
-def movie_update(request):
-    pass
+def movie_update(request, movie_id):
+    movie = get_object_or_404(Moviews, pk=movie_id)
+    if request.user != movie.author:
+        messages.error(request, '수정권한이 없습니다')
+        return redirect('moview:detail', movie_id)
+
+    if request.method == "POST":
+        form = MoviewForm(request.POST,request.FILES, instance=movie)
+        if form.is_valid():
+            movie = form.save(commit=False)
+            movie.moviewimg = request.FILES.get('moviewimg')
+            movie.save()
+            return redirect('moview:index')
+    else:
+        form = MoviewForm(instance=movie)
+    context = {'form': form,'movie':movie}
+    return render(request, 'moview/modify.html', context)
