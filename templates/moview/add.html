@@ -9,7 +9,7 @@
         </script>
     {% endif %}
 
-    <section style="margin-left: 200px; margin-right: 300px; margin-top: 30px;">
+    <section style="margin-left: 200px; margin-right: 300px; ">
         <h2>영화일기를 그리다.</h2>
 {#        enctype="multipart/form-data" 이거 없으면 이미지 안됨 #}
         <form method="post" class="add_movie" action="{% url 'moview:create'  %}" enctype="multipart/form-data">
@@ -55,7 +55,7 @@
                     <label for="demo-priority-other">기타</label>
                 </div>
                 <div class="col-12">
-                    <textarea name="story" id="demo-message" placeholder="Enter Your Movie Story.." rows="5"></textarea>
+                    <textarea name="story" id="demo-message" placeholder="Enter Your Movie Story.." rows="5" ></textarea>
                 </div>
                 <div class="col-12">
                     <ul class="actions">
