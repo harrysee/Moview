@@ -41,6 +41,7 @@ body{
     align-self: center;
     background-color: rgb(223, 223, 231);
     cursor: pointer;
+    line-height: normal;
     border: 2px solid rgb(233, 233, 233);
 }
 

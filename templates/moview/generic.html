@@ -8,7 +8,7 @@
 
                 <!-- Logo -->
                     <a href="index.html" class="logo">
-                        <span class="symbol"><img src="/static/images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+                        <span class="symbol"><img src="/static/images/logo.svg" alt="" /></span><span class="title">Moview</span>
                     </a>
 
             </div>
@@ -26,13 +26,20 @@
                 {% endif %}
 {#              날짜 출력 #}
                 <p style="align-self: flex-end; text-align: end; margin-right: 20px; margin-top: -40px">{{ moview.viewdate }}</p>
-
+{#                내용 출력 #}
                 {% for line in lines %}
                 <p>{{ line }}</p>
                 {% endfor %}
 {#              업로드유저, 카테고리 출력#}
                 <pre style="margin-right: 2em">작성자 : {{ moview.uploaduser }}  |  영화장르 : {{ moview.category }}</pre>
             </div>
+            {% if is_user %}
+                <div class="buttons" style="display: flex; justify-content: flex-end;">
+                    <button style="margin-right: 2em"><a href="{% url 'moview:delete' moview.id %}">삭제하기 </a></button>
+                    <button><a href="{% url 'moview:update' moview.id %}">수정하기 </a></button>
+                </div>
+            {% endif %}
+
         </div>
     </div>
     <!-- Footer -->

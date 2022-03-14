@@ -38,6 +38,15 @@ def add_movie(request):
 def movie_detail(request, movie_id):
     # 해당 영화일기의 내용 출력 : pk - 해당 아이디인것만 가져오기
     movies = get_object_or_404(Moviews, pk=movie_id)
-    lines = list(movies.story.split('\n'))
-    context = {'moview': movies, 'lines':lines}
+    lines = list(movies.story.split('\n'))      # 문단 끊어서 보내기
+    is_user = request.user.username== movies.uploaduser     # 지금 로그인된 유저가 작성한 게시물인지
+    context = {'moview': movies, 'lines':lines, 'is_user':is_user}
     return render(request, 'moview/generic.html', context)
+
+
+def movie_delete(request):
+    return None
+
+
+def movie_update(request):
+    return None
