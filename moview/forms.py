@@ -13,4 +13,4 @@ class UserForm(UserCreationForm):   # 장고의 UserCreationForm 클래스 상�
 class MoviewForm(forms.ModelForm):
     class Meta:
         model = Moviews
-        fields = ['moviename','viewdate','moviewline','category','story'] # 무비폼에서 사용할 뮤비 모델의 속성
+        fields = ['moviename','viewdate','moviewimg','moviewline','category','story'] # 무비폼에서 사용할 뮤비 모델의 속성

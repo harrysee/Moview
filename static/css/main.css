@@ -73,11 +73,6 @@ input, select, textarea {
 }
 
 /* Basic */
-
-	@-ms-viewport {
-		width: device-width;
-	}
-
 	body {
 		-ms-overflow-style: scrollbar;
 	}
@@ -2052,7 +2047,6 @@ input, select, textarea {
 		}
 
 /* Form */
-
 	form {
 		margin: 0 0 2em 0;
 		overflow-x: hidden;
@@ -2137,6 +2131,7 @@ input, select, textarea {
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
+	input[type="file"],
 	select,
 	textarea {
 		-moz-appearance: none;
@@ -2159,6 +2154,8 @@ input, select, textarea {
 		input[type="password"]:invalid,
 		input[type="email"]:invalid,
 		input[type="tel"]:invalid,
+		input[type="date"],
+		input[type="file"],
 		select:invalid,
 		textarea:invalid {
 			box-shadow: none;
@@ -2168,6 +2165,8 @@ input, select, textarea {
 		input[type="password"]:focus,
 		input[type="email"]:focus,
 		input[type="tel"]:focus,
+		input[type="file"],
+		input[type="date"],
 		select:focus,
 		textarea:focus {
 			border-bottom-color: #f2849e;
@@ -2175,7 +2174,7 @@ input, select, textarea {
 		}
 
 	select {
-		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='%23c9c9c9' /%3E%3C/svg%3E");
+		background-image: url("/static/images/logo.svg");
 		background-size: 1.25rem;
 		background-repeat: no-repeat;
 		background-position: calc(100% - 1rem) center;
@@ -2199,6 +2198,7 @@ input, select, textarea {
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
+	input[type="file"],
 	select {
 		height: 3em;
 	}
@@ -2206,6 +2206,40 @@ input, select, textarea {
 	textarea {
 		padding: 0;
 		min-height: 3.75em;
+	}
+	input[type="date"]{
+		padding: .3em .75em;
+		display: inline-block;
+		border-radius: 10px;
+	}
+	.upload_img label{
+		display: inline-block;
+		height: 2.5em;
+		padding: .3em .80em;
+		padding-top: 10px;
+		color: #c9c9c9;
+		margin-right: 10px;
+		font-size: inherit;
+		line-height: normal;
+		vertical-align: middle;
+		background-color: #ffffff;
+		cursor: pointer;
+		border: 2px solid #575757;
+		border-bottom-color: #e07474;
+		border-radius: .25em;
+	}
+	/* 파일 필드 숨기기 */
+	.upload_img input[type="file"]{
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip:rect(0,0,0,0);
+		cursor: pointer;
+		border: 0;
+
 	}
 
 	input[type="checkbox"],
