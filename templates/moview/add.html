@@ -11,7 +11,8 @@
 
     <section style="margin-left: 200px; margin-right: 300px; margin-top: 30px;">
         <h2>영화일기를 그리다.</h2>
-        <form method="post" class="add_movie" action="{% url 'moview:create'  %}">
+{#        enctype="multipart/form-data" 이거 없으면 이미지 안됨 #}
+        <form method="post" class="add_movie" action="{% url 'moview:create'  %}" enctype="multipart/form-data">
             {% csrf_token %}
             {% include 'form_add_errors.html' %}
             <div class="row gtr-uniform">

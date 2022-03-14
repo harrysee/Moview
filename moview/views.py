@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from .models import Moviews
@@ -10,17 +11,25 @@ def index(request):
     # order_by : viewdate순으로 -붙여서 역방향
     mlist = Moviews.objects.order_by('-viewdate')
     # moview 데이터를 moview.index.html에 적용하여 HTML 리턴함
-    context = {'mlist' : mlist}
-    return render(request, 'moview/index.html',context)
+    # 랜덤으로 배경 스타일 주기
+    style = ['style1','style2','style3','style4','style5','style6']
+    randoms = list()
+    for i in range(len(mlist)):
+        randoms.append(random.choice(style))
+    context = {'multilist' : zip(mlist,style)}
+    return render(request, 'moview/index.html', context)
 
 def add_movie(request):
     # 뮤비 추가
     if request.method == 'POST':
-        movie = MoviewForm(request.POST)
-        if movie.is_valid():
-            movie = movie.save(commit=True)
+        form = MoviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            movie = form.save(commit=False)
+            movie.uploaduser = request.user.username
+            movie.moviewimg = request.FILES.get('moviewimg')
+            movie.save()
             return redirect('moview:index')
     else:
-        movie = MoviewForm()
-    context = {'form':movie}
+        form = MoviewForm()
+    context = {'form':form}
     return render(request, 'moview/add.html',context)
