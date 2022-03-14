@@ -1,6 +1,8 @@
 import random
+from pyexpat.errors import messages
+
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,get_object_or_404,redirect
-from django.http import HttpResponse
 from .models import Moviews
 from .forms import MoviewForm
 
@@ -25,7 +27,7 @@ def add_movie(request):
         form = MoviewForm(request.POST, request.FILES)
         if form.is_valid():
             movie = form.save(commit=False)
-            movie.uploaduser = request.user.username
+            movie.author = request.user
             movie.moviewimg = request.FILES.get('moviewimg')
             movie.save()
             return redirect('moview:index')
@@ -39,14 +41,21 @@ def movie_detail(request, movie_id):
     # 해당 영화일기의 내용 출력 : pk - 해당 아이디인것만 가져오기
     movies = get_object_or_404(Moviews, pk=movie_id)
     lines = list(movies.story.split('\n'))      # 문단 끊어서 보내기
-    is_user = request.user.username== movies.uploaduser     # 지금 로그인된 유저가 작성한 게시물인지
+    is_user = request.user== movies.author     # 지금 로그인된 유저가 작성한 게시물인지
     context = {'moview': movies, 'lines':lines, 'is_user':is_user}
     return render(request, 'moview/generic.html', context)
 
-
-def movie_delete(request):
-    return None
+# 해당 함수 역시 로그인이 필요하기때문에 어노테이션 넣음
+@login_required(login_url='common:login')
+def movie_delete(request: object, movie_id):
+    # 질문삭제 : 사용자, 글쓴이가 동일한 경우에만
+    movie = get_object_or_404(Moviews, pk=movie_id)
+    if request.user != movie.author:
+        messages.error(request, "삭제권한이 없습니다.")
+    else:
+        movie.delete()
+    return redirect('moview:index')
 
 
 def movie_update(request):
-    return None
+    pass

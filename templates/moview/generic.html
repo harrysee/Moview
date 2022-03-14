@@ -31,11 +31,11 @@
                 <p>{{ line }}</p>
                 {% endfor %}
 {#              업로드유저, 카테고리 출력#}
-                <pre style="margin-right: 2em">작성자 : {{ moview.uploaduser }}  |  영화장르 : {{ moview.category }}</pre>
+                <pre style="margin-right: 2em">작성자 : {{ moview.author.username }}  |  영화장르 : {{ moview.category }}</pre>
             </div>
             {% if is_user %}
                 <div class="buttons" style="display: flex; justify-content: flex-end;">
-                    <button style="margin-right: 2em"><a href="{% url 'moview:delete' moview.id %}">삭제하기 </a></button>
+                    <button style="margin-right: 2em" onclick="is_delete()">삭제하기</button>
                     <button><a href="{% url 'moview:update' moview.id %}">수정하기 </a></button>
                 </div>
             {% endif %}
@@ -47,4 +47,12 @@
             <div class="inner">
             </div>
         </footer>
+    <script>
+    function is_delete(){
+        if(confirm("해당 영화일기를 삭제하시겠습니까?")){
+            location.href = "{% url 'moview:delete' moview.id %}";
+        }
+    }
+    </script>
 {% endblock %}
+

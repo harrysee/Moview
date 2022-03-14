@@ -7,6 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),    # '/'에 해당되는 path
     path('moview/create/', views.add_movie, name='create'),    # '/'에 해당되는 path
     path('moview/<int:movie_id>/', views.movie_detail, name='detail'),
-    path('moview/<int:movie_id>/delete', views.movie_delete, name='delete'),
-    path('moview/<int:movie_id>/update', views.movie_update, name='update'),
+    path('moview/delete/<int:movie_id>', views.movie_delete, name='delete'),
+    path('moview/update/<int:movie_id>', views.movie_update, name='update'),
 ]
