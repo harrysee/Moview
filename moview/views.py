@@ -84,6 +84,5 @@ def movie_update(request, movie_id):
     return render(request, 'moview/modify.html', context)
 
 def movie_choose(request):
-    movies = Moviews.objects.all()
-    print(movies)
-    return
+    movie = random.choice(Moviews.objects.all())    #랜덤으로 한개 정하기
+    return redirect('moview:detail', movie.id)
