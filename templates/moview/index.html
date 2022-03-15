@@ -10,18 +10,21 @@
                     <span class="symbol"><img src="/static/images/logo.svg" alt="" /></span><span class="title">Moview</span>
                 </a>
                 <h1>Movie View _영화를 다시 그리다.<br/>
-                    add your line in movies : <a href="http://html5up.net"> Choose Story</a>.</h1>
-                <p>영화 속 나의 이야기를 알아가는 시간 .
+                    add your line in movies : <a href="{%url 'moview:choose' %}"> Choose Story</a>.</h1>
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start;  ">
+                    <p>영화 속 나의 이야기를 알아가는 시간 .
                     누군가의 영화 이야기를 통해 나만의 영화를 찾아가는 시간 .</p>
-                <form action="{% url 'moview:index' %}" class="searchForm"
-                      style="display: flex; align-items: flex-end; margin-right: 8em; justify-content: flex-end; margin-top:-95px; flex-direction: row">
-                    <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}"
+                    <form action="{% url 'moview:index' %}" class="searchForm"
+                        style="display: flex; align-items: flex-end; margin-right: 8em; justify-content: flex-end; margin-left: 20px; flex-direction: row; margin-top: -30px">
+                        <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}"
                            style="width: 15em; " size="5">
-                    <button type="submit" class="searchbtn" style="width: 6em; height: 3em">검색</button>
+                    <button type="submit" class="searchbtn" style="line-height: normal; width: 6em; font-size: 12px; height: 3em">검색</button>
                 </form>
+                </div>
+
             </header>
             <section class="tiles">
-                {#                    영화리스트 for문 돌리기 #}
+{#              영화리스트 for문 돌리기 #}
                 {% for movie,style in multilist %}
                     <article class="{{ style }}">
                         <span class="image">

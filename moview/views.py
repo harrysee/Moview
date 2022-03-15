@@ -6,7 +6,7 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Moviews
 from .forms import MoviewForm
 
-# render : 파이썬 데이터를 템플릿에 적용하여 HTML로 반환하는 함수
+# render : 파이썬 데이터를 템플릿 에 적용하여 HTML로 반환하는 함수
 # Create your views here.
 def index(request):
     # 영화목록 출력
@@ -82,3 +82,8 @@ def movie_update(request, movie_id):
         form = MoviewForm(instance=movie)
     context = {'form': form,'movie':movie}
     return render(request, 'moview/modify.html', context)
+
+def movie_choose(request):
+    movies = Moviews.objects.all()
+    print(movies)
+    return
