@@ -1,7 +1,7 @@
 import random
 from pyexpat.errors import messages
-
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Moviews
 from .forms import MoviewForm
@@ -10,15 +10,23 @@ from .forms import MoviewForm
 # Create your views here.
 def index(request):
     # 영화목록 출력
+    kw = request.GET.get('kw','')
+
     # order_by : viewdate순으로 -붙여서 역방향
     mlist = Moviews.objects.order_by('-viewdate')
+    if kw:
+        mlist = mlist.filter(
+            Q(moviename__icontains=kw)  | # 영화이름 검색
+            Q(author__username__icontains=kw) | # 작성자 검색
+            Q(moviewline__icontains=kw)
+        ).distinct()    # 중복제거
     # moview 데이터를 moview.index.html에 적용하여 HTML 리턴함
     # 랜덤으로 배경 스타일 주기
     style = ['style1','style2','style3','style4','style5','style6']
     randoms = list()
     for i in range(len(mlist)):
         randoms.append(random.choice(style))
-    context = {'multilist' : zip(mlist,style)}
+    context = {'multilist' : zip(mlist,style), 'kw':kw}
     return render(request, 'moview/index.html', context)
 
 def add_movie(request):
