@@ -86,3 +86,15 @@ def movie_update(request, movie_id):
 def movie_choose(request):
     movie = random.choice(Moviews.objects.all())    #랜덤으로 한개 정하기
     return redirect('moview:detail', movie.id)
+
+
+def movie_my(request):
+    movies = Moviews.objects.order_by('-viewdate').filter(
+        Q(author__username__contains=request.user.username)
+    ).distinct()
+    style = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6']
+    randoms = list()
+    for i in range(len(movies)):
+        randoms.append(random.choice(style))
+    context = {'multilist': zip(movies, style), 'kw': ''}
+    return render(request, 'moview/index.html',context)

@@ -1,22 +1,31 @@
 <nav>
-<!-- Header -->
+    <!-- Header -->
     <div id="wrapper">
         <header id="header">
             <div class="inner">
 
                 <!-- Nav : 로그인, 게시물추가, 검색기능 -->
-                    <nav>
-                        <ul>
-                            <li><a href="{% url 'moview:index' %}">movies </a>  | </li>
-                            <li><a href="{% url 'moview:create' %}">create </a>  | </li>
-{#                            로그인 되어있는지 검사하기 #}
-                            {% if user.is_authenticated %}
-                                <li><a href="{% url 'common:logout' %}">logout </a> </li>
-                            {% else %}
-                                <li><a href="{% url 'common:login' %}">login </a> </li>
-                            {% endif %}
-                        </ul>
-                    </nav>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'moview:index' %}">movies </a> |</li>
+                        <li><a href="{% url 'moview:create' %}">create </a> |</li>
+                        <li><a href="{% url 'moview:mymovie' %}">MY </a> |</li>
+                        {#                            로그인 되어있는지 검사하기 #}
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'common:logout' %}">logout </a> |  </li>
+                        {% else %}
+                            <li><a href="{% url 'common:login' %}">login </a> |  </li>
+                        {% endif %}
+                        <li>
+                            <form action="{% url 'moview:index' %}" class="searchForm"
+                                  style="display: flex; align-items: center; padding: 0; padding-left:1em;margin-top: 2em;" >
+                                <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}" placeholder="search"
+                                       style="all:initial; padding: 5px; line-height: normal; font-size: 13px; padding-left: 10px; width: 7em; border: 1px solid #575757; border-radius: 2em; margin-right: 5px" size="5" >
+                                    <button type="submit" style="all: initial; cursor: pointer"> <img src="/static/images/search.png" width="25" /></button>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
 
             </div>
         </header>
