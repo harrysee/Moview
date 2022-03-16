@@ -10,7 +10,7 @@
                         <li><a href="{% url 'moview:index' %}">movies </a> |</li>
                         <li><a href="{% url 'moview:create' %}">create </a> |</li>
                         <li><a href="{% url 'moview:mymovie' %}">MY </a> |</li>
-                        {#                            로그인 되어있는지 검사하기 #}
+                        {# 로그인 되어있는지 검사하기 #}
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'common:logout' %}">logout </a> |  </li>
                         {% else %}

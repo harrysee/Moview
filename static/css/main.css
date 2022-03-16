@@ -2279,13 +2279,14 @@ input, select, textarea {
 				text-rendering: auto;
 				line-height: 1;
 				text-transform: none !important;
-				font-family: 'Font Awesome 5 Free';
+				font-family: 'FontAwesome', sans-serif;
 				font-weight: 900;
 			}
 
 			input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
 				border-radius: 4px;
+				font-family: 'FontAwesome';
 				border: solid 1px #c9c9c9;
 				content: '';
 				display: inline-block;
@@ -2303,7 +2304,7 @@ input, select, textarea {
 		input[type="radio"]:checked + label:before {
 			background: #585858;
 			border-color: #585858;
-			color: #ffffff;
+			color: transparent;
 			content: '\f00c';
 		}
 
