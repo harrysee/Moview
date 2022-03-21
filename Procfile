@@ -1,2 +1,2 @@
-web:gunicorn moview.wsgi --log-file-
-web:gunicorn moview.wsgi --timeout 3000
+web:gunicorn config.wsgi --log-file-
+web:gunicorn config.wsgi --timeout 6000
