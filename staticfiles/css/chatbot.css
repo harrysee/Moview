@@ -1,0 +1,8 @@
+.chatbox{
+    all: initial;
+    position: fixed;
+    right: 3em;
+    bottom: 5px;
+    visibility: hidden;
+}
+
