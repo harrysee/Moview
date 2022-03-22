@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -26,21 +25,24 @@ import os
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
 
-secret_file = os.path.join(BASE_DIR,'secrets.json')
+secret_file = os.path.join(BASE_DIR, 'secrets.json')
 
 with open(secret_file) as f:
     secrets = json.loads(f.read())
 
-def get_secret(setting, secrets= secrets):
+
+def get_secret(setting, secrets=secrets):
     try:
         return secrets[setting]
     except KeyError:
         error_msg = "Set the environment variable."
         raise ImproperlyConfigured(error_msg)
+
+
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG','True')!='False')
+DEBUG = (os.environ.get('DEBUG', 'True') != 'False')
 
 ALLOWED_HOSTS = ['*']
 
@@ -73,7 +75,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,7 +90,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -98,7 +99,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -118,7 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -132,12 +131,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [    # 디렉터리 추가
+STATICFILES_DIRS = [  # 디렉터리 추가
     BASE_DIR / 'static',
 ]
 
@@ -148,5 +146,10 @@ MEDIA_URL = '/media/'
 LOGOUT_REDIRECT_URL = '/'
 
 import dj_database_url
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())

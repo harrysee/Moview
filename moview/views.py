@@ -1,4 +1,6 @@
+from datetime import datetime
 import random
+import time
 from pyexpat.errors import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -37,6 +39,7 @@ def add_movie(request):
             movie = form.save(commit=False)
             movie.author = request.user
             movie.moviewimg = request.FILES.get('moviewimg')
+            movie.datetime = datetime.fromtimestamp(time.time())    # 2020-03-26 16:28:28.581626
             movie.save()
             return redirect('moview:index')
     else:
