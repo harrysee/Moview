@@ -7,7 +7,6 @@ import time
 
 # Create your models here.
 class Moviews(models.Model):
-    id = models.AutoField(primary_key=True)
     moviename = models.CharField(max_length=20)
     category = models.CharField(max_length=10)
     moviewline = models.CharField(max_length=55)
