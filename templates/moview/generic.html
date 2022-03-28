@@ -1,49 +1,40 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load sass_tags %}
 {% block content %}
-<!-- Header -->
-    <div class="wrap_detail" style="margin-top:-100px;display: flex; justify-content: center; flex-direction: column; padding-left: 5em; padding-right: 5em">
-        <header id="header" >
-            <div class="inner" >
-                <!-- Logo -->
-                <a href="" class="logo">
-                    <span class="symbol"><img src="/static/images/logo.png" alt="" /></span><span class="title">Moview</span>
-                </a>
-            </div>
-        </header>
-    <!-- Main -->
-        <div id="main">
-            <div class="inner" >
-                <h1 style="margin-bottom: 20px">{{ moview.moviename }}</h1>
-                <h5 style="padding-left: 10px">'{{ moview.moviewline }}'</h5>
+    <div class="detail-container">
+        <header id="detail-header">
+            <span class="moview-img" >
                 {% if moview.moviewimg %}
-                    <span class="image main detailsize" ><img src="{{ moview.moviewimg.url }}" alt="" style="height: 300px; object-fit: cover"/></span>
+                    <img src="{{ moview.moviewimg.url }}" alt="" style="height: 300px; object-fit: cover"/>
                 {% else %}
-                    <span class="image main detailsize"><img src="/static/images/pic13.jpg" alt="" style="height: 300px; object-fit: cover" /></span>
+                    <img src="/static/images/pic13.jpg" alt="" style="height: 300px; object-fit: cover" />
                 {% endif %}
-{#              날짜 출력 #}
-                <p style="align-self: flex-end; text-align: end; margin-right: 20px; margin-top: -40px">{{ moview.viewdate }}</p>
-{#                내용 출력 #}
-                {% for line in lines %}
-                <p>{{ line }}</p>
-                {% endfor %}
-{#              업로드유저, 카테고리 출력#}
-                <pre style="margin-right: 2em">작성자 : {{ moview.author.username }}  |  영화장르 : {{ moview.category }}</pre>
+            </span>
+            <div id="detail-article" class="movie-infos">
+                    <ul class="movie-info-list">
+                       <li class="info name">이름 : {{ moview.author.username }}</li>
+                       <li class="info line">한줄 : {{ moview.movieline }}</li>
+                       <li class="info concept">장르 : {{ moview.category }}</li>
+                       <li class="info date">날짜 : {{ moview.viewdate }}</li>
+                       <li class="info writer">작성자 : {{ moview.viewdate }}</li>
+                    </ul>
             </div>
             {% if is_user %}
-                <div class="buttons" style="display: flex; justify-content: flex-end;">
-                    <button style="margin-right: 2em" onclick="is_delete()">삭제하기</button>
-                    <button><a href="{% url 'moview:update' moview.id %}">수정하기 </a></button>
+                <div class="buttons" >
+                    <button class="detail-btn del" onclick="is_delete()">삭제하기</button>
+                    <button><a class="detail-btn edit" href="{% url 'moview:update' moview.id %}">수정하기 </a></button>
                 </div>
             {% endif %}
-
+        </header>
+        <hr id="detail-line"/>
+        <div class="movie-story">
+            {% for line in lines %}
+            <p>{{ line }}</p>
+            {% endfor %}
         </div>
     </div>
-    <!-- Footer -->
-        <footer id="footer">
-            <div class="inner">
-            </div>
-        </footer>
+
+{#    삭제 묻기 #}
     <script>
     function is_delete(){
         if(confirm("해당 영화일기를 삭제하시겠습니까?")){
@@ -51,5 +42,6 @@
         }
     }
     </script>
+
 {% endblock %}
 
