@@ -1,59 +1,64 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load sass_tags %}
 {% block content %}
-
-    <section style="margin-left: 200px; margin-right: 300px; ">
-        <h2>영화일기를 다시 그리다.</h2>
+{#    로그인하지 않은 유저가 들어올 시 종료하기 #}
+    {% if not user.is_authenticated %}
+        <script type="text/javascript">
+            alert("로그인 후 이용가능합니다.");
+            window.location.href = "{% url 'common:login' %}";  // url 이동
+        </script>
+    {% endif %}
+    <section id="create-section">
+        <h2 class="add-title">영화일기를 그리다.</h2>
 {#        enctype="multipart/form-data" 이거 없으면 이미지 안됨 #}
-        <form method="post" class="add_movie" action="{% url 'moview:update' movie.id %}" enctype="multipart/form-data">
+        <form method="post" class="add_movie" action="{% url 'moview:create'  %}" enctype="multipart/form-data">
             {% csrf_token %}
             {% include 'form_add_errors.html' %}
-            <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall" style="display: block">
+            <div class="create-box">
+                <div class="create-item name" >
                     <input type="text" name="moviename" id="demo-name" value="{{ movie.moviename }}" placeholder="제목" />
                 </div>
-                <div class="col-6 col-12-xsmall" style="display: flex; flex-direction: row; align-items: baseline; align-content: center; justify-content: flex-end">
-                    <input type="date"  name="viewdate" id="demo-date" value="{{ movie.viewdate }}" />
-                    <div class="col-6 col-12-xsmall upload_img filebox" style="align-self: stretch; margin-left: 10px">
-                        <label for="demo-img">업로드</label>
-                        <input type="file" name="moviewimg" id="demo-img" class="upload-hidden" value="" placeholder="영화 속 장면" />
-                    </div>
+                <div class="create-item date" >
+                    <input type="date"  name="viewdate" id="demo-date" value="{{ movie.viewdate }}" placeholder="영화 본 날짜(20200810)" />
                 </div>
-
-                <div class="col-12">
-                    <input type="text" name="moviewline" id="demo-line" value="{{ movie.moviewline }}" placeholder="영화 속 감명깊던 대사" />
+                <div class="create-item line" style="width: 60em">
+                    <input type="text" name="moviewline" id="demo-line" value="{{ movie.movieline }}" placeholder="영화 속 감명깊던 대사"/>
                 </div>
-                <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-fan" name="category" value="판타지" checked>
-                    <label for="demo-priority-fan">판타지</label>
+                <div class="create-item concept">
+                    <input type="radio" id="concept-fan" name="category" value="판타지" checked>
+                    <label for=concept-fan">판타지</label>
                 </div>
-                <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-romans" value="로맨스" name="category">
-                    <label for="demo-priority-romans">로맨스</label>
+                <div class="create-item concept">
+                    <input type="radio" id="concept-romans" value="로맨스" name="category">
+                    <label for="concept-romans">로맨스</label>
                 </div>
-                <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-act" value="액션" name="category">
-                    <label for="demo-priority-act">액션</label>
+                <div class="create-item concept">
+                    <input type="radio" id="concept-act" value="액션" name="category">
+                    <label for="concept-act">액션</label>
                 </div>
-                <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-hore" value="스릴러" name="category">
-                    <label for="demo-priority-hore">스릴러</label>
+                <div class="create-item concept">
+                    <input type="radio" id="concept-hore" value="스릴러" name="category">
+                    <label for="concept-hore">스릴러</label>
                 </div>
-                <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-hilling" value="힐링" name="category">
-                    <label for="demo-priority-hilling">힐링</label>
+                <div class="create-item concept">
+                    <input type="radio" id="concept-hilling" value="힐링" name="category">
+                    <label for="concept-hilling">힐링</label>
                 </div>
-                <div class="col-4 col-12-small">
-                    <input type="radio" id="demo-priority-other" value="기타" name="category">
-                    <label for="demo-priority-other">기타</label>
+                <div class="create-item concept">
+                    <input type="radio" id="concept-other" value="기타" name="category">
+                    <label for="concept-other">기타</label>
                 </div>
-                <div class="col-12">
+                <div class="create-item texts" style="width: 60em">
                     <textarea name="story" id="demo-message" placeholder="Enter Your Movie Story.." rows="5" >{{ movie.story }}</textarea>
                 </div>
-                <div class="col-12">
+                <div class="submit-box">
                     <ul class="actions">
+                        <li>
+                            <div class="col-6 col-12-xsmall upload_img filebox" style="align-self: stretch; margin-left: 10px">
+                                <label for="demo-img">업로드</label>
+                                <input type="file" name="moviewimg" id="demo-img" class="upload-hidden" value="" placeholder="영화 속 장면" />
+                            </div></li>
                         <li><input type="submit" value="Save Story" class="primary" /></li>
-                        <li><input type="reset" value="Reset" /></li>
                     </ul>
                 </div>
             </div>
