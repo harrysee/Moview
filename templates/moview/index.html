@@ -1,23 +1,17 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load sass_tags %}
 {% block content %}
     <!-- Main -->
-    <div id="main" style="padding-left: 70px; margin-top: -10em">
+    <div class="main-container">
         <div class="inner">
-            <header id="header" style="display: flex; flex-wrap: wrap; flex-direction: column">
-                 <!-- Logo -->
-                <a href="" class="logo">
-                    <span class="symbol"><img src="/static/images/logo.png" alt="" /></span><span class="title">Moview</span>
-                </a>
-                <h1>Movie View _영화를 다시 그리다.<br/>
-                    add your line in movies : <a href="{%url 'moview:choose' %}"> Choose Story</a>.</h1>
-                <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start;  ">
-                    <p>영화 속 나의 이야기를 알아가는 시간 .
-                    누군가의 영화 이야기를 통해 나만의 영화를 찾아가는 시간 .</p>
-                </div>
-
-            </header>
-            <section class="tiles">
+            <div class="search">
+                <form action="{% url 'moview:index' %}" class="searchForm">
+                    <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}" placeholder="search movies"/>
+                    <button type="submit"><img src="/static/images/search.png" width="25" /></button>
+                </form>
+            </div>
+            <hr class="main-line">
+            <section class="movies">
 {#              영화리스트 for문 돌리기 #}
                 {% for movie,style in multilist %}
                     <article class="{{ style }}">
@@ -40,14 +34,5 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer id="footer" style="padding-bottom: 10px; padding-top: 15px; display: flex; align-items: center; justify-content: center">
-        <div style="text-align: center">
-            <p style="all: initial; font-size: 13px; color: #575757">Protocol 2022 All Reserved</p>
-            <p style="font-size: 13px">
-                MOVIEW | 개발자:전유리 | 이용방안:아래참고 <br>
-                create를 통해 기록물을 생성하고, MY를 통해 자신의 기록물만 볼수있습니다.
-            </p>
-        </div>
-    </footer>
+
 {% endblock %}
