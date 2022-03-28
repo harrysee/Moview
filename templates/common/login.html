@@ -11,10 +11,10 @@
                 {% include "form_errors.html" %}
                 <input type="text" name="username" id="username" class="input id" placeholder="아이디" value="{{ form.username.value|default_if_none:'' }}">
                 <input type="password" name="password" id="password" class="input pw" placeholder="비밀번호" value="{{ form.password.value|default_if_none:'' }}">
-                <div class="sign-box">
-                    <button class="submit">로그인</button>
-                    <a href="{% url 'common:signup' %}" class="sign-up">-> 회원가입</a>
-                </div>
+                <ul class="sign-box">
+                    <li class="sign-btn"><button class="submit">로그인</button></li>
+                    <li class="sign-btn"><a href="{% url 'common:signup' %}" class="sign-up">-> 회원가입</a><li class="sign-btn">
+                </ul>
             </form>
         </div>
     </div>
