@@ -6,17 +6,17 @@
         <img src="/static/images/camera.png" class="start_camera" alt="카메라"/>
         <div class="start_texts">
             <h1 class="title">영화를 새롭게 그리는 시간</h1>
-            <hr class="start-text-line">
+            <hr class="start-text-line" align="left">
             <h3 class="message">영화를 본 기록과 추억을 Moview에서 남기세요.</h3>
         </div>
         <div class="start-btns">
-            <button class="btn view">View</button>
-            <button class="btn create">Create</button>
+            <a href="#" id="btn-a"><button class="btn view">View</button></a>
+            <a href="#" id="btn-a"><button class="btn create">Create</button></a>
         </div>
     </div>
 </div>
 <div class="random-box">
     <p class="random-text">랜덤으로 영화일기를 추천합니다.</p>
-    <img src="/static/images/play.png" class="random-img"/>
+    <a href="{% url 'moview:choose' %}" class="random-a"><img src="/static/images/play.png" class="random-img"/></a>
 </div>
 {% endblock %}
