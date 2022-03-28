@@ -1,13 +1,16 @@
+<style type="text/css">
+    @import url("/static/css/style.scss");
+</style>
 <nav>
    <a class="logo" href="#">Moview</a>
     <ul class="nav_list">
-        <li class="list item_view"><a href="{% url 'moview:index' %}">views </a>|</li>
-        <li class="list item_mypage"><a href="{% url 'moview:mymovie' %}">mypage </a>|</li>
+        <li class="list item_view"><a href="{% url 'moview:index' %}">views  </a>  |</li>
+        <li class="list item_mypage"><a href="{% url 'moview:mymovie' %}">mypage  </a> |</li>
 
         {% if user.is_authenticated %}
-        <li class="list item_login"><a href="{% url 'common:login' %}">Login </a>|</li>
+        <li class="list item_login"><a href="{% url 'common:login' %}">Login  </a></li>
         {% else %}
-        <li class="list item_login"><a href="{% url 'common:logout' %}">Logout </a></li>
+        <li class="list item_login"><a href="{% url 'common:logout' %}">Logout  </a></li>
         {% endif %}
     </ul>
 </nav>

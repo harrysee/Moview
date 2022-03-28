@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
+$size_nav: 18px;
+$size_logo: 25px;
+$color_black:#000000;
+$back_color_nav:rgba(131, 140, 172, 0.77);
+
+@mixin link-text{
+  color: $color_black;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+// nav
+nav{
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  width: 100%;
+  height: 63px;
+  left: 0;
+  top: 0;
+  background-color: $back_color_nav;
+  .logo{
+    font-size: $size_logo;
+    font-weight: 400;
+    line-height: 62px;
+    font-family: 'Knewave', cursive;
+    padding-left: 20px;
+    @include link-text
+  }
+  .nav_list{
+    list-style: none;
+    margin-left: auto;
+    display: flex;
+    padding-right: 20px;
+    text-decoration: none;
+    .list{
+      a{
+        font-size: $size_nav;
+        font-family: 'Lemonada', cursive;
+        @include link-text
+      }
+    }
+  }
+}
+
+// start 화면

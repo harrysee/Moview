@@ -1,4 +1,4 @@
-{% load static %}
+{% load sass_tags %}
 <!doctype html>
 <html lang="ko">
 <head>
@@ -8,23 +8,17 @@
     <link rel="shortcut icon" href="#">
     <!-- css -->
     <link rel="icon" href="/static/images/favicon.png">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}?after">
-    <title>Moview-main</title>
+    <link rel="stylesheet" type="text/css" href="{% sass_src 'css/style.scss' %}?after">
+    <title>Moview</title>
 </head>
 <body class="is-preload">
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
 {% include 'nav.html' %}
 {% block content %}
 {% endblock %}
-{% include 'moview/chatbot.html' %}
 
 <!-- Scripts -->
-<script src="/static/js/jquery.min.js"></script>
-<script src="/static/js/browser.min.js"></script>
-<script src="/static/js/breakpoints.min.js"></script>
-<script src="/static/js/util.js"></script>
-<script src="/static/js/main.js"></script>
-
+{#<script src="/static/js/jquery.min.js"></script>#}
 <!-- 기본 템플릿 안에 삽입될 내용 End -->
 </body>
 </html>
