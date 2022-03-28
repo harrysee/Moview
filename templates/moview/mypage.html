@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load sass_tags %}
+{% block content %}
+    <div class="my-container">
+        <header>
+            <img src="#" class="profile-img"/>
+            <div class="info-box">
+                <ul class="profile-text">
+                   <li class="info name">이름 : </li>
+                   <li class="info name">아이디 : </li>
+                   <li class="info name">이메일 : </li>
+                </ul>
+                <button class="edit-profile">회원정보 변경</button>
+            </div>
+        </header>
+        <section class="my-movies">
+            {% include 'movielist.html' %}
+        </section>
+    </div>
+{% endblock %}

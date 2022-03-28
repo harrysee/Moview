@@ -12,24 +12,7 @@
             </div>
             <hr class="main-line">
             <section class="movies">
-{#              영화리스트 for문 돌리기 #}
-                {% for movie,style in multilist %}
-                    <article class="{{ style }}">
-                        <span class="image">
-                            {% if movie.moviewimg %}
-                                <img src="{{ movie.moviewimg.url }}" alt="영화이미지"/>
-                            {% else %}
-                                <img src="/static/images/pic01.jpg" alt="영화이미지"/>
-                            {% endif %}
-                        </span>
-                        <a href="{% url 'moview:detail' movie.id %}">
-                            <h2>{{ movie.moviename }}</h2>
-                            <div class="content">
-                                <p>{{ movie.moviewline }}</p>
-                            </div>
-                        </a>
-                    </article>
-                {% endfor %}
+                {% include 'movielist.html' %}
             </section>
         </div>
     </div>

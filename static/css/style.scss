@@ -39,9 +39,10 @@ nav{
     text-decoration: none;
     .list{
       a{
+        cursor: pointer;
         font-size: $size_nav;
         font-family: 'Lemonada', cursive;
-        @include link-text
+        @include link-text;
       }
     }
   }
