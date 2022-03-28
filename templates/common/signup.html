@@ -1,4 +1,41 @@
 {% extends 'base.html' %}
+{% block content %}
+    <style type="text/css">
+    @import url("/static/css/sign.scss");
+    </style>
+<div class="signup-container">
+    <div class="signup-wrap">
+        <a href="{% url 'moview:index' %}" ><h1>회원가입</h1></a>
+        <form method="post" class="signup-form" action="{% url 'common:login' %}">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <span class="signup-item id">아이디</span>
+            <input type="text" name="userid" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+
+            <span class="signup-item nicname">닉네임</span>
+            <input type="text" name="username" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+
+            <span class="signup-item e-mail">이메일</span>
+            <input type="text" name="email" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+
+            <span class="signup-item pw">PW</span>
+            <input type="text" name="password1" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+
+            <span class="signup-item pw-check">PW확인</span>
+            <input type="text" name="password2" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+
+            <div class="signup-item profile-img" style="align-self: stretch; margin-left: 10px">
+                <label for="user-img">업로드</label>
+                <input type="file" name="userimg" id="user-img" class="user-img" value="" placeholder="영화 속 장면" />
+            </div>
+            <button class="submit">가입하기</button>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% extends 'base.html' %}
 
 {% block content %}
     <style type="text/css">
