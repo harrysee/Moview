@@ -31,6 +31,8 @@ $font_knewave :'Knewave', cursive;
   background-color:$back_color_dark;
   @include flex-column;
 }
+
+// 로그인 css
 .sign-container{
   @include container-sign;
   &:after{
@@ -89,7 +91,7 @@ $font_knewave :'Knewave', cursive;
     }
   }
 }
-
+// 회원가입 css
 .signup-container{
   @include container-sign;
   a{
@@ -109,24 +111,25 @@ $font_knewave :'Knewave', cursive;
     border: $color_border solid 2px;
     background-color: #f3f0f0;
     @include flex-column;
-    align-items: center;
     padding: 0;
     justify-content: start;
     box-shadow: $shadow-box;
   }
   .signup-form{
-    width: 48vw;
     height: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: start;
+    &:before{
+        width: 100vw;
+      }
     .sign-info{
       display: flex;
       justify-content: space-evenly;
       margin-bottom: 10px;
       .signup-item{
         width: 25%;
-        margin-right: 20px;
+        margin-right: 45px;
       }
       input{
         flex-shrink: initial;
@@ -134,6 +137,7 @@ $font_knewave :'Knewave', cursive;
         border:$color_border solid 1px;
         width: 75%;
       }
+
     }
     .submit{
         margin-top: 3em;
@@ -147,7 +151,7 @@ $font_knewave :'Knewave', cursive;
         vertical-align: middle;
         border: 1px solid $color_border;
         font-size: 12px;
-        width: 70%;
+        width: 60%;
         margin-left: 13px;
         color: #999999;
       }

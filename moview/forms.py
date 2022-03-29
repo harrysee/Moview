@@ -5,12 +5,11 @@ from moview.models import Moviews
 
 class UserForm(UserCreationForm):   # 장고의 UserCreationForm 클래스 상속
     email = forms.EmailField()  # 이메일 속성 추가
-    username = forms.CharField(max_length=15)
-    profile = forms.ImageField(upload_to="moview/users", blank=True,null=True)
-    
+    nicname = forms.CharField(max_length=15)
+
     class Meta:
         model = User
-        fields = ("userid","username","email","password1","password2","profile")
+        fields = ("username","nicname","email","password1","password2")
 
 class MoviewForm(forms.ModelForm):
     class Meta:

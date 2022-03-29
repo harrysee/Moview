@@ -1,36 +1,35 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
+{% load moview_filter %}
 {% block content %}
     <div class="detail-container">
         <header id="detail-header">
             <span class="moview-img" >
                 {% if moview.moviewimg %}
-                    <img src="{{ moview.moviewimg.url }}" alt="" style="height: 300px; object-fit: cover"/>
+                    <img src="{{ moview.moviewimg.url }}" alt="" />
                 {% else %}
-                    <img src="/static/images/pic13.jpg" alt="" style="height: 300px; object-fit: cover" />
+                    <img src="/static/images/pic13.jpg" alt=""  />
                 {% endif %}
             </span>
             <div id="detail-article" class="movie-infos">
                     <ul class="movie-info-list">
-                       <li class="info name">이름 : {{ moview.author.username }}</li>
-                       <li class="info line">한줄 : {{ moview.movieline }}</li>
+                       <li class="info name">제목 : {{ moview.moviename }}</li>
+                       <li class="info line">한줄 : {{ moview.moviewline }}</li>
                        <li class="info concept">장르 : {{ moview.category }}</li>
                        <li class="info date">날짜 : {{ moview.viewdate }}</li>
-                       <li class="info writer">작성자 : {{ moview.viewdate }}</li>
+                       <li class="info writer">작성자 : {{ moview.author.username }}</li>
                     </ul>
             </div>
-            {% if is_user %}
-                <div class="buttons" >
-                    <button class="detail-btn del" onclick="is_delete()">삭제하기</button>
-                    <button><a class="detail-btn edit" href="{% url 'moview:update' moview.id %}">수정하기 </a></button>
-                </div>
-            {% endif %}
         </header>
+        {% if is_user %}
+            <div class="buttons" >
+                <button class="detail-btn del" onclick="is_delete()">삭제하기</button>
+                <button><a class="detail-btn edit" href="{% url 'moview:update' moview.id %}">수정하기 </a></button>
+            </div>
+        {% endif %}
         <hr id="detail-line"/>
         <div class="movie-story">
-            {% for line in lines %}
-            <p>{{ line }}</p>
-            {% endfor %}
+            <p>{{ moview.moviewline|mark }}</p>
         </div>
     </div>
 

@@ -8,9 +8,9 @@ def signup(request):
     if request.method == "POST": # 입력한 후이면
         form = UserForm(request.POST)
         if form.is_valid(): # 유효성 검사?
-            form.save()
+            form = form.save()
             # form.cleaned_data.get : 입력값을 개별적으로 얻고 싶은 경우에 사용
-            userid = form.cleaned_data.get('userid')
+            userid = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get("password1")
             # 사용자명과 비밀번호가 정확한지 검증
             user = authenticate(username=userid, password=raw_password)

@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500&display=swap');
 $size_nav: 16px;
 $size_logo: 25px;
 $size_nav_heigth: 63px;
@@ -10,18 +11,20 @@ $size_line: 50em;
 
 $margin_nav: 6em;
 $margin_top_container: 13em;
+$margin_start: 10em;
 
-$color_black:#000000;
+$color_black: rgba(0, 0, 0, 0.51);
 $color_wight:#ffffff;
 $color_blue:#E3EEFF;
 
-$back_color_nav:rgba(131, 140, 172, 0.77);
+$back_color_nav: rgb(142, 152, 189);
 $back_color_gray: rgba(55, 55, 55, 0.8);
 
 $font_ibm_regular : 'IBM Plex Sans Condensed', sans-serif;
 $font_ibm_light : 'IBM Plex Sans KR', sans-serif;
 $font_kurale :'Kurale', serif;
 $font_knewave :'Knewave', cursive;
+$font_notosans :'Noto Sans KR', sans-serif;
 
 $radious-movies:30px;
 $radious-profile:48%;
@@ -59,7 +62,6 @@ $radious-button: 15px;
   -ms-grid-column-align: start;
 }
 @mixin movie-item{
-
       article{
       position: relative;
       display: table;
@@ -193,7 +195,9 @@ nav{
   align-content: center;
   background-color: $back_color_gray;
   .splash{
-    margin-left: 10em;
+    animation-duration: 3s;
+    animation-name: slidein;
+    margin-left: $margin_start;
 
     .start_camera{
       width: 4em;
@@ -233,7 +237,7 @@ nav{
         .create {
           border-bottom-left-radius: 0;
           border-top-left-radius: 0;
-          background-color: #8499e7;
+          background-color: $back_color_nav;
         }
       }
     }
@@ -248,10 +252,12 @@ nav{
   right: 3em;
   align-items: center;
   &:hover > .random-text{
-    color: $color_wight;
+    animation-duration: 3s;
+    animation-name: showtext;
   }
-  &:active{
-
+  &:hover > .random-a > .random-img{
+    background-color: rgba(255, 0, 59, 0.5);
+    border-radius: 50%;
   }
   .random-text{
     @include white-text;
@@ -378,5 +384,119 @@ nav{
     @include movie-list-section;
     padding-left: 5em;
     @include movie-item;
+  }
+}
+
+// 상세페이지 보여주기
+.detail-container{
+  @include container;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:5em;
+  height: inherit;
+  padding-bottom: 5em;
+  header{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 70%;
+    justify-items: start;
+    align-items: center;
+    z-index: -1000;
+    align-content: start;
+    img{
+      border-radius: 30px;
+      width: 20em;
+      height: 20em;
+      border: $color_black solid 3px;
+    }
+    #detail-article{
+      width: 40%;
+      list-style: none;
+      display: flex;
+      margin-left: 5em;
+      flex-direction: column;
+      justify-items: end;
+      justify-content: space-evenly;
+      height: 18vh;
+      .info{
+        font-size: large;
+        padding-top: 10px;
+        font-family: $font_ibm_regular;
+      }
+    }
+    .movie-info-list{
+      list-style: none;
+      justify-items: start;
+    }
+  }
+  .buttons{
+    display: flex;
+    position: absolute;
+    left: 70%;
+    top: 55%;
+    button{
+      background-color: transparent;
+      padding: 5px;
+      padding-left: 20px;
+      padding-right: 20px;
+      cursor: pointer;
+      margin-left: 10px;
+      .detail-btn{
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+  #detail-line{
+    width: $size_line+20;
+    margin-top: 3em;
+    color: black;
+    margin-bottom: 0.3em;
+  }
+  .movie-story{
+    margin-top: 50px;
+    padding-left: 1em;
+    padding-top: 0.5em;
+    width: 80vw;
+    height: 80vh;
+    overflow: auto;
+    text-align: start;
+    font-size: 18px;
+    color: black;
+    background-color: #f1f3fa;
+  }
+}
+
+// 애니매이션
+@keyframes target_image {
+ from {
+      opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slidein {
+  from {
+    opacity: 0;
+    margin-left: 30%;
+  }
+  to {
+    opacity: 1;
+    margin-left: $margin_start;
+  }
+}
+@keyframes showtext {
+  from {
+    opacity: 0;
+    color: rgba(128, 128, 128, 0.51);
+    margin-left: 30%;
+  }
+  to {
+    opacity: 1;
+    color: $color_wight;
+    margin-left: 0%;
   }
 }
