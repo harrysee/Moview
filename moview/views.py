@@ -98,7 +98,7 @@ def movie_my(request):
     for i in range(len(movies)):
         randoms.append(random.choice(style))
     context = {'multilist': zip(movies, style), 'kw': ''}
-    return render(request, 'moview/index.html',context)
+    return render(request, 'moview/mypage.html',context)
 
 
 def start(request):

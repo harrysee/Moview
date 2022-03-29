@@ -3,16 +3,18 @@
 {% block content %}
     <div class="my-container">
         <header>
-            <img src="#" class="profile-img"/>
+            <img src="/static/images/pic01.jpg" class="profile-img"/>
             <div class="info-box">
                 <ul class="profile-text">
-                   <li class="info name">이름 : </li>
-                   <li class="info name">아이디 : </li>
-                   <li class="info name">이메일 : </li>
+                   <li class="info name">😎&#9;이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</li>
+                   <li class="info name">🗝&#9;아이디&nbsp;:&nbsp;</li>
+                   <li class="info name">💌&#9;이메일&nbsp;:&nbsp;</li>
+                    <li><button class="edit-profile">회원정보 변경</button></li>
                 </ul>
-                <button class="edit-profile">회원정보 변경</button>
+
             </div>
         </header>
+        <hr class="my-line"/>
         <section class="my-movies">
             {% include 'movielist.html' %}
         </section>
