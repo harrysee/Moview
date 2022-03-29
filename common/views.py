@@ -10,10 +10,10 @@ def signup(request):
         if form.is_valid(): # 유효성 검사?
             form.save()
             # form.cleaned_data.get : 입력값을 개별적으로 얻고 싶은 경우에 사용
-            username = form.cleaned_data.get('username')
+            userid = form.cleaned_data.get('userid')
             raw_password = form.cleaned_data.get("password1")
             # 사용자명과 비밀번호가 정확한지 검증
-            user = authenticate(username=username, password=raw_password)
+            user = authenticate(username=userid, password=raw_password)
             # 자동으로 로그인하기
             login(request,user)
             return redirect('/')    # url이름이 index인 곳으로 이동시킴

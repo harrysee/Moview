@@ -3,10 +3,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200&display=swap');
-$size_loginbox_w :35%;
+$size_loginbox_w :60vh;
 $size_loginbox_h :40%;
+$size_signup_w :60vh;
+$size_signup_h :70%;
+
+$radious-box:30px;
 
 $back_color_dark : rgba(88, 88, 88, 0.73);
+$shadow-box: 0 15px 24px 5px rgba(0,0.5,0.8,0.2), 0 8px 20px -2px rgba(14, 14, 14, 0.38), 0 6px 10px -6px rgba(10, 10, 10, 0.45);
+$color_border :#bdbdbd;
 
 $font_ibm_regular : 'IBM Plex Sans Condensed', sans-serif;
 $font_ibm_light : 'IBM Plex Sans KR', sans-serif;
@@ -19,11 +25,14 @@ $font_knewave :'Knewave', cursive;
   justify-content: center;
   align-items: center;
 }
-.sign-container{
+@mixin container-sign{
   width: 100vw;
   height: 100vh;
   background-color:$back_color_dark;
   @include flex-column;
+}
+.sign-container{
+  @include container-sign;
   &:after{
     align-self: center;
   }
@@ -39,12 +48,13 @@ $font_knewave :'Knewave', cursive;
     display: flex;
     width: $size_loginbox_w;
     height: $size_loginbox_h;
-    border-radius: 40px;
-    border: black solid 2px;
+    border-radius: $radious-box;
+    border: $color_border solid 2px;
     background-color: #f3f0f0;
     @include flex-column;
     align-items: center;
     justify-content: start;
+    box-shadow: $shadow-box;
   }
   .login_form{
     height: 20vh;
@@ -79,4 +89,94 @@ $font_knewave :'Knewave', cursive;
     }
   }
 }
+
+.signup-container{
+  @include container-sign;
+  a{
+    text-decoration: none;
+  }
+  a > h1{
+    color: #0e0b3e;
+    font-family: $font_ibm_regular;
+    font-size: 2.5em;
+  }
+
+  .signup-wrap{
+    display: flex;
+    width: $size_signup_w;
+    height: $size_signup_h;
+    border-radius:$radious-box;
+    border: $color_border solid 2px;
+    background-color: #f3f0f0;
+    @include flex-column;
+    align-items: center;
+    padding: 0;
+    justify-content: start;
+    box-shadow: $shadow-box;
+  }
+  .signup-form{
+    width: 48vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    .sign-info{
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 10px;
+      .signup-item{
+        width: 25%;
+        margin-right: 20px;
+      }
+      input{
+        flex-shrink: initial;
+        padding: 10px;
+        border:$color_border solid 1px;
+        width: 75%;
+      }
+    }
+    .submit{
+        margin-top: 3em;
+        background-color: white;
+        cursor: pointer;
+      }
+    .profile-img{
+      .upload-name{
+        display: inline-block;
+        height: 30px;
+        vertical-align: middle;
+        border: 1px solid $color_border;
+        font-size: 12px;
+        width: 70%;
+        margin-left: 13px;
+        color: #999999;
+      }
+      label{
+        width: 15%;
+        display: inline-block;
+        color: #fff;
+        font-size: 13px;
+        text-align: center;
+        padding:0 10px 0 10px;
+        padding-top: 10px;
+        padding-bottom: -10px;
+        vertical-align: middle;
+        background-color: #b1b9c6;
+        cursor: pointer;
+        height: 30px;
+        border-radius: 10px;
+      }
+      input[type="file"] {
+          position: absolute;
+          width: 0;
+          height: 0;
+          padding: 0;
+          overflow: hidden;
+          border: 0;
+      }
+    }
+  }
+}
+
+
 

@@ -1,64 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
-    <style type="text/css">
-    @import url("/static/css/sign.scss");
-    </style>
 <div class="signup-container">
     <div class="signup-wrap">
         <a href="{% url 'moview:index' %}" ><h1>회원가입</h1></a>
-        <form method="post" class="signup-form" action="{% url 'common:login' %}">
-            {% csrf_token %}
-            {% include "form_errors.html" %}
-            <span class="signup-item id">아이디</span>
-            <input type="text" name="userid" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
-
-            <span class="signup-item nicname">닉네임</span>
-            <input type="text" name="username" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
-
-            <span class="signup-item e-mail">이메일</span>
-            <input type="text" name="email" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
-
-            <span class="signup-item pw">PW</span>
-            <input type="text" name="password1" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
-
-            <span class="signup-item pw-check">PW확인</span>
-            <input type="text" name="password2" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
-
-            <div class="signup-item profile-img" style="align-self: stretch; margin-left: 10px">
-                <label for="user-img">업로드</label>
-                <input type="file" name="userimg" id="user-img" class="user-img" value="" placeholder="영화 속 장면" />
-            </div>
-            <button class="submit">가입하기</button>
-
-        </form>
-    </div>
-</div>
-{% endblock %}
-
-{% extends 'base.html' %}
-
-{% block content %}
-    <style type="text/css">
-    @import url("/static/css/signup.css");
-    </style>
-<div class="wrap">
-        <h1 style="margin-top: 100px; width:10em">환영합니다!!</h1>
         <form method="post" class="signup-form" action="{% url 'common:signup' %}">
             {% csrf_token %}
             {% include "form_errors.html" %}
-            <span class="input-text">이메일</span>
-            <input type="text" name="email" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
-
-             <span class="input-text">사용자 id</span>
-            <input type="text" name="username" class="input-id" placeholder="아이디를 입력하세요" value="{{ form.username.value|default_if_none:''}}">
-
-            <span class="input-text">비밀번호</span>
-            <input type="password" name="password1" class="input-pw"  placeholder="비밀번호 5자 이상입니다." value="{{ form.password1.value|default_if_none:'' }}">
-
-            <span class="input-text">비밀번호 확인</span>
-            <input type="password" name="password2"  class="input-pw-check"  placeholder="비밀번호 확인" value="{{ form.password2.value|default_if_none:'' }}">
-            <button type="submit">가입하기</button>
+            <div class="sign-info">
+                <span class="signup-item id">아이디</span>
+                <input type="text" name="userid" class="input-id" placeholder="아이디를 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="sign-info">
+                <span class="signup-item nicname">닉네임</span>
+                <input type="text" name="username" class="input-name" placeholder="사용할 이름을 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="sign-info">
+                <span class="signup-item e-mail">이메일</span>
+                <input type="text" name="email" class="input-email" placeholder="이메일 형식에 맞춰서 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="sign-info">
+                <span class="signup-item pw">PW</span>
+                <input type="text" name="password1" class="input-pw" placeholder="비밀번호를 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="sign-info">
+                <span class="signup-item pw-check">PW확인</span>
+                <input type="text" name="password2" class="input-pwchk" placeholder="비밀번호를 한번 더 확인합니다." value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="signup-item profile-img" >
+                <label for="file">프로필</label>
+                <input class="upload-name" value="첨부파일" placeholder="첨부파일">
+                <input type="file" id="file" name="profile">       </div>
+            <button type="submit" class="submit">가입하기</button>
         </form>
-
+    </div>
+<script>
+    $("#file").on('change',function(){
+      var fileName = $("#file").val();
+      $(".upload-name").val(fileName);
+    });
+</script>
 </div>
 {% endblock %}
+
+
