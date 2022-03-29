@@ -20,6 +20,8 @@ $font_ibm_regular : 'IBM Plex Sans Condensed', sans-serif;
 $font_ibm_light : 'IBM Plex Sans KR', sans-serif;
 $font_kurale :'Kurale', serif;
 
+$radious-movies:30px;
+
 @mixin link-text{
   color: $color_black;
   text-decoration: none;
@@ -33,11 +35,104 @@ $font_kurale :'Kurale', serif;
 @mixin container{ // 각 화면 컨테이너
   display: flex;
   height: 100vh;
+  flex-direction: column;
 }
 @mixin white-text{
   color: $color_wight;
   font-family: $font_ibm_light;
 }
+@mixin border-radius{
+  border-radius: 50px;
+}
+
+@mixin movie-item{
+  .movies{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: repeat(auto-fill, minmax(100px, auto));
+      row-gap: 2em;
+      padding-left: 50px;
+      column-gap: 2em;
+      -ms-grid-column-align: start;
+      article{
+        position: relative;
+        display: table;
+        .image{
+          border-radius: $radious-movies;
+          box-shadow: 0 15px 24px 0px rgba(0,0,0.5,0.12), 0 8px 20px -2px rgba(0,0,0,0.06), 0 6px 10px -6px rgba(0,0,0,0.10);
+          vertical-align: middle;
+          width: 100%;
+          display: table-cell;
+        }
+        .text-box{
+          display: table-cell;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          border-radius: $radious-movies;
+          flex-direction: column;
+          justify-content: center;
+          line-height: 0;
+          top: 0;
+          text-align: center;
+          background-color: rgba(0, 0, 0, 0.32);
+          h2{
+            @include white-text;
+            padding-bottom: 10px;
+          }
+          .content{
+            @include white-text;
+            padding-top: 35%;
+            color: #dcdcdc;
+          }
+        }
+        &:before{
+          content: '';
+          background: none;
+          border-radius: 3px;
+          transition: opacity 0.1s ease-in;
+          will-change: opacity;
+          opacity: 0;
+        }
+        // CSS state ------------------------
+        &:hover > .image{
+          -moz-transform: scale(1.1);
+          -webkit-transform: scale(1.1);
+          -ms-transform: scale(1.1);
+          transform: scale(1.1);
+
+          &:before {
+            background-color: #333333;
+            opacity: 0.35;
+          }
+          &:after{
+            opacity: 0;
+          }
+        }
+        &:hover > .movie-box> .text-box{
+          -moz-transform: scale(1.1);
+          -webkit-transform: scale(1.1);
+          -ms-transform: scale(1.1);
+          transform: scale(1.1);
+          background-color: rgba(0, 0, 0, 0);
+
+          &:before {
+            background-color: rgba(0, 0, 0, 0);
+            opacity: 0.35;
+          }
+          &:after{
+            opacity: 0;
+          }
+        }
+        &:hover > .content{
+          background-color: transparent;
+          color: black;
+        }
+      }
+    }
+}
+
 // 전체 설정
 body{
   margin: 0;
@@ -61,7 +156,10 @@ nav{
     line-height: 62px;
     font-family: 'Knewave', cursive;
     padding-left: 20px;
-    @include link-text
+    @include link-text;
+    &:hover{
+      font-size: $size_logo+2;
+    }
   }
   .nav_list{
     list-style: none;
@@ -137,6 +235,7 @@ nav{
   }
 }
 
+// 랜덤 추천 아이콘
 .random-box{
   display: flex;
   position: absolute;
@@ -162,3 +261,61 @@ nav{
   }
 
 }
+
+// 목록 화면
+.main-container{
+  @include container;
+  justify-items: center;
+  align-items: center;
+  .inner{
+    @include container;
+    align-content: center;
+    align-items: center;
+    margin-top: 7em;
+    .search {
+      width: 25em;
+      height: 3em;
+      background: #FFFFFF;
+      border: 1px solid #000000;
+      box-sizing: border-box;
+      border-radius: 35px;
+      .searchForm{
+        display: flex;
+        align-self: center;
+        margin-top: 9px;
+        justify-content: space-between;
+        .search_input {
+          margin-left: 18px;
+          width: 25vw;
+          height: 4vh;
+          font-size: 1em;
+          border: none;
+          &:hover{
+            border:none;
+          }
+          &:active{
+            border: none;
+          }
+        }
+
+        #search-sub-btn {
+          align-self: center;
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          padding-right: 10px;
+        }
+      }
+
+    }
+    .main-line{
+      margin-top: 4em;
+      margin-bottom: 4em;
+      width: 50em;
+    }
+    // 아이템들
+    @include movie-item;
+  }
+}
+
+// mypage 화면

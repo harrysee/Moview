@@ -7,7 +7,7 @@
             <div class="search">
                 <form action="{% url 'moview:index' %}" class="searchForm">
                     <input type="text" name="kw" class="search_input kw" value="{{ kw|default_if_none:'' }}" placeholder="search movies"/>
-                    <button type="submit"><img src="/static/images/search.png" width="25" /></button>
+                    <button type="submit" id="search-sub-btn" ><img align="right" class="search-img" src="/static/images/search.png" width="25" /></button>
                 </form>
             </div>
             <hr class="main-line">

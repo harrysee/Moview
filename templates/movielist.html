@@ -1,18 +1,24 @@
 {#  영화리스트 for문 돌리기 #}
+
 {% for movie,style in multilist %}
     <article class="{{ style }}">
         <span class="image">
             {% if movie.moviewimg %}
-                <img src="{{ movie.moviewimg.url }}" alt="영화이미지"/>
+                <img src="{{ movie.moviewimg.url }}" alt="영화이미지" class="image"/>
             {% else %}
-                <img src="/static/images/pic01.jpg" alt="영화이미지"/>
+                <img src="/static/images/pic01.jpg" alt="영화이미지" class="image"/>
             {% endif %}
         </span>
-        <a href="{% url 'moview:detail' movie.id %}">
-            <h2>{{ movie.moviename }}</h2>
-            <div class="content">
-                <p>{{ movie.moviewline }}</p>
+{#    style="background-color: {{ style }}"#}
+        <a href="{% url 'moview:detail' movie.id %}" class="movie-box" >
+            <div class="text-box">
+                <div class="content">
+                    <h2>{{ movie.moviename }}</h2>
+                    <p>{{ movie.moviewline }}</p>
+                </div>
+
             </div>
         </a>
+
     </article>
 {% endfor %}
