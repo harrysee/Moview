@@ -8,11 +8,11 @@
             {% include "form_errors.html" %}
             <div class="sign-info">
                 <span class="signup-item id">아이디</span>
-                <input type="text" name="username" class="input-id" placeholder="아이디를 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+                <input type="text" name="username" class="input-id" placeholder="아이디를 입력하세요" value="{{ form.username.value|default_if_none:'' }}">
             </div>
             <div class="sign-info">
                 <span class="signup-item nicname">닉네임</span>
-                <input type="text" name="nicname" class="input-name" placeholder="사용할 이름을 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+                <input type="text" name="nicname" class="input-name" placeholder="사용할 이름을 입력하세요" value="{{ form.nicname.value|default_if_none:'' }}">
             </div>
             <div class="sign-info">
                 <span class="signup-item e-mail">이메일</span>
@@ -20,11 +20,11 @@
             </div>
             <div class="sign-info">
                 <span class="signup-item pw">PW</span>
-                <input type="password" name="password1" class="input-pw" placeholder="비밀번호를 입력하세요" value="{{ form.email.value|default_if_none:'' }}">
+                <input type="password" name="password1" class="input-pw" placeholder="비밀번호를 입력하세요" value="{{ form.password1.value|default_if_none:'' }}">
             </div>
             <div class="sign-info">
                 <span class="signup-item pw-check">PW확인</span>
-                <input type="password" name="password2" class="input-pwchk" placeholder="비밀번호를 한번 더 확인합니다." value="{{ form.email.value|default_if_none:'' }}">
+                <input type="password" name="password2" class="input-pwchk" placeholder="비밀번호를 한번 더 확인합니다." value="{{ form.password2.value|default_if_none:'' }}">
             </div>
             <div class="signup-item profile-img" >
                 <label for="file">프로필</label>

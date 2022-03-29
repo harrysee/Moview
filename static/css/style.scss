@@ -390,7 +390,6 @@ nav{
 // 상세페이지 보여주기
 .detail-container{
   @include container;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top:5em;
@@ -466,6 +465,125 @@ nav{
     font-size: 18px;
     color: black;
     background-color: #f1f3fa;
+  }
+}
+
+// 추가화면
+.create-container{
+  @include container;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: $size_nav_heigth+30;
+  section{
+    width: 50%;
+    h2{
+      font-family: $font_notosans;
+      font-style: normal;
+      font-weight: 400;
+      color: rgba(66, 66, 66, 0.78);
+      font-size: 40px;
+    }
+    form{
+      #line-one{
+        display: flex;
+        #demo-name{
+          width: 30vw;
+        }
+      }
+      #demo-line{
+        width: 45vw;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      #radio-boxs{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 10em;
+        row-gap: 10px;
+        margin-bottom: 2em;
+        .concept{
+          font-size: 18px;
+          font-weight: lighter;
+          font-family: $font-notosans;
+        }
+      }
+      #demo-message{
+        width: 46vw;
+        border: gray solid 1px;
+        border-radius: 10px;
+        font-family: $font-notosans;
+        font-weight: lighter;
+        font-size: 16px;
+        height: 20em;
+        padding: 5px;
+      }
+      .actions{
+        list-style: none;
+        display: flex;
+        position: relative;
+        right: 5%;
+        justify-content: end;
+        li > input[type="submit"]{
+          background-color: white;
+          width: 5em;
+          padding-top: 6px;
+          color: #747474;
+          vertical-align: middle;
+          font-size: 16px;
+          font-family: $font_notosans;
+          padding-bottom: 6px;
+          border-radius: 7px;
+        }
+        li > div > label{
+          display: inline-block;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          width: 5em;
+          color: #6a6a6a;
+          vertical-align: middle;
+          font-family: $font_notosans;
+          background-color: #ffffff;
+          cursor: pointer;
+          border: 2px solid #575757;
+          text-align: center;
+          border-radius: 7px;
+          margin-right: 1em;
+        }
+
+        .upload_img input[type="file"] {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            cursor: pointer;
+            border: 0;
+        }
+
+      }
+      input[type="text"]{
+        padding: 10px;
+        font-size: 15px;
+        font-family: $font-notosans;
+        font-weight: lighter;
+        background-color: white;
+        border: gray solid 1px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      input[type="date"]{
+        margin-left: 5em;
+        padding: 10px;
+        border-radius: 5px;
+        border: gray solid 1px;
+        font-family: $font-notosans;
+        font-weight: lighter;
+      }
+    }
   }
 }
 

@@ -43,7 +43,7 @@ def add_movie(request):
     else:
         form = MoviewForm()
     context = {'form':form}
-    return render(request, 'moview/add.html',context)
+    return render(request, 'moview/create.html',context)
 
 
 def movie_detail(request, movie_id):

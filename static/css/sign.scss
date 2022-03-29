@@ -62,11 +62,13 @@ $font_knewave :'Knewave', cursive;
     height: 20vh;
     display: flex;
     flex-direction: column;
+    margin-top: -15px;
     justify-content: start;
     input{
       flex-shrink: initial;
       padding: 10px;
       width: 20em;
+      margin-top: 10px;
     }
     .sign-box{
       display: flex;
@@ -140,7 +142,8 @@ $font_knewave :'Knewave', cursive;
 
     }
     .submit{
-        margin-top: 3em;
+        position: relative;
+        top: 13px;
         background-color: white;
         cursor: pointer;
       }

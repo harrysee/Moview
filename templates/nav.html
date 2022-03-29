@@ -6,9 +6,9 @@
         <li class="list item_mypage"><a href="{% url 'moview:mymovie' %}">mypage  </a> &nbsp;|&nbsp;</li>
 
         {% if user.is_authenticated %}
-        <li class="list item_login"><a href="{% url 'common:login' %}">Login  </a></li>
-        {% else %}
         <li class="list item_login"><a href="{% url 'common:logout' %}">Logout  </a></li>
+        {% else %}
+        <li class="list item_login"><a href="{% url 'common:login' %}">Login  </a></li>
         {% endif %}
     </ul>
 </nav>
