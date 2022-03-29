@@ -6,6 +6,7 @@
 $size_nav: 16px;
 $size_logo: 25px;
 $size_nav_heigth: 63px;
+$size_line: 50em;
 
 $margin_nav: 6em;
 
@@ -200,7 +201,7 @@ nav{
         font-size: 3em;
       }
       .start-text-line{
-        width: 50em;
+        width: $size_line;
       }
       .message{
         @include white-text
@@ -311,7 +312,7 @@ nav{
     .main-line{
       margin-top: 4em;
       margin-bottom: 4em;
-      width: 50em;
+      width: $size_line;
     }
     // 아이템들
     @include movie-item;
