@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lemonada&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200&display=swap');
+$size_loginbox_w :35%;
+$size_loginbox_h :40%;
+
+$back_color_dark : rgba(88, 88, 88, 0.73);
+
+$font_ibm_regular : 'IBM Plex Sans Condensed', sans-serif;
+$font_ibm_light : 'IBM Plex Sans KR', sans-serif;
+$font_kurale :'Kurale', serif;
+$font_knewave :'Knewave', cursive;
+
+@mixin flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sign-container{
+  width: 100vw;
+  height: 100vh;
+  background-color:$back_color_dark;
+  @include flex-column;
+  &:after{
+    align-self: center;
+  }
+  .login-title{
+    text-decoration: none;
+    h1{
+      color: #0e0b3e;
+      font-family: $font_knewave;
+      font-size: 3em;
+    }
+  }
+  .sign-wrap{
+    display: flex;
+    width: $size_loginbox_w;
+    height: $size_loginbox_h;
+    border-radius: 40px;
+    border: black solid 2px;
+    background-color: #f3f0f0;
+    @include flex-column;
+    align-items: center;
+    justify-content: start;
+  }
+  .login_form{
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    input{
+      flex-shrink: initial;
+      padding: 10px;
+      width: 20em;
+    }
+    .sign-box{
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      list-style: none;
+      .sign{
+        background-color: transparent;
+        color: black;
+        border: none;
+        text-decoration: none;
+        margin-right: 10px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .submit:hover{
+        text-decoration: underline;
+      }
+      .sign-up:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
