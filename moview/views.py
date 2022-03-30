@@ -2,6 +2,7 @@ import random
 from pyexpat.errors import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render,get_object_or_404,redirect
 from django.template import RequestContext
 from .models import Moviews
@@ -27,7 +28,7 @@ def index(request):
     randoms = list()
     for i in range(len(mlist)):
         randoms.append(random.choice(style))
-    context = {'multilist' : zip(mlist,style), 'kw':kw}
+    context = {'multilist' : zip(mlist,style), 'kw':kw, 'user':request.user}
     return render(request, 'moview/index.html', context)
 
 def add_movie(request):
@@ -88,9 +89,9 @@ def movie_choose(request):
     return redirect('moview:detail', movie.id)
 
 
-def movie_my(request):
+def movie_my(request,username):
     movies = Moviews.objects.order_by('-viewdate').filter(
-        Q(author__username__contains=request.user.username)
+        Q(author__username__contains=username)
     ).distinct()
     style = ['style1', 'style2', 'style3', 'style4', 'style5', 'style6']
     randoms = list()
@@ -101,4 +102,10 @@ def movie_my(request):
 
 
 def start(request):
+    is_user = request.user  # 지금 로그인된 유저가 작성한 게시물인지
+    context = {'user': is_user}
     return render(request, 'moview/start.html')
+
+
+def limit_user(request):
+    return render(request, 'limit.html')

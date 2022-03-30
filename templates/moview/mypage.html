@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
 {% block content %}
-    <div class="my-container">
+    <div class="my-container" style="margin-top: 8%">
         <header>
-            <img src="/static/images/pic01.jpg" class="profile-img"/>
+            {% if user.profile %}
+            <img src="{{ user.profile.url }}" class="profile-img" style="max-width: 300px"/>
+            {% else %}
+            <img src="/static/images/face.png" class="profile-img" style="max-width: 300px"/>
+            {% endif %}
             <div class="info-box">
                 <ul class="profile-text">
-                   <li class="info name">😎&#9;이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;</li>
-                   <li class="info name">🗝&#9;아이디&nbsp;:&nbsp;</li>
-                   <li class="info name">💌&#9;이메일&nbsp;:&nbsp;</li>
-                    <li><button class="edit-profile">회원정보 변경</button></li>
+                   <li class="info name">😎&#9;이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;{{  user.nickname }}</li>
+                   <li class="info name">🗝&#9;아이디&nbsp;:&nbsp;{{  user.username }}</li>
+                   <li class="info name">💌&#9;이메일&nbsp;:&nbsp;{{  user.email }}</li>
+{#                    <li><button class="edit-profile">회원정보 변경</button></li>#}
                 </ul>
 
             </div>

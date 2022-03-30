@@ -1,9 +1,11 @@
 {% if form.errors %}
         <div class="alert alert-danger" role="alert">
         {% for field in form %}
+            <script type="text/javascript">
             {% if field.errors %}
-            <strong>{{ field.label }}</strong>
+                    alert('{{ field.label }}');
             {{ field.errors }}
+            </script>
             {% endif %}
         {% endfor %}
         </div>

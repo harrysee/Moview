@@ -11,5 +11,6 @@ urlpatterns = [
     path('delete/<int:movie_id>/', views.movie_delete, name='delete'),
     path('update/<int:movie_id>/', views.movie_update, name='update'),
     path('choose/', views.movie_choose, name='choose'),
-    path('my', views.movie_my, name='mymovie')
+    path('user/<str:username>/', views.movie_my, name='userinfo'),
+    path('is_user/', views.limit_user, name='limit')
 ]

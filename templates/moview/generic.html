@@ -17,7 +17,7 @@
                        <li class="info line">한줄 : {{ moview.moviewline }}</li>
                        <li class="info concept">장르 : {{ moview.category }}</li>
                        <li class="info date">날짜 : {{ moview.viewdate }}</li>
-                       <li class="info writer">작성자 : {{ moview.author.username }}</li>
+                        <a href="{% url 'moview:userinfo' moview.author.username  %}" style="z-index:1000; text-decoration: underline; color: #384f97; cursor: pointer;"><li class="info writer">작성자 :  {{ moview.author.username }} </li></a>
                     </ul>
             </div>
         </header>

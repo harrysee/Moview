@@ -1,15 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+
+from common.models import CustomUser
 from moview.models import Moviews
+
 
 class UserForm(UserCreationForm):   # 장고의 UserCreationForm 클래스 상속
     email = forms.EmailField()  # 이메일 속성 추가
-    nicname = forms.CharField(max_length=15)
 
     class Meta:
-        model = User
-        fields = ("username","nicname","email","password1","password2")
+        model = CustomUser
+        fields = ("username", "nickname", "email", "password1", "password2", "profile")
 
 class MoviewForm(forms.ModelForm):
     class Meta:

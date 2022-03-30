@@ -3,11 +3,12 @@
    <a class="logo" href="{% url 'moview:start' %}">Moview</a>
     <ul class="nav_list">
         <li class="list item_view"><a href="{% url 'moview:index' %}">views  </a>  &nbsp;|&nbsp;</li>
-        <li class="list item_mypage"><a href="{% url 'moview:mymovie' %}">mypage  </a> &nbsp;|&nbsp;</li>
 
         {% if user.is_authenticated %}
+        <li class="list item_mypage"><a href="{% url 'moview:userinfo' user.username%}">mypage  </a> &nbsp;|&nbsp;</li>
         <li class="list item_login"><a href="{% url 'common:logout' %}">Logout  </a></li>
         {% else %}
+        <li class="list item_mypage"><a href="{% url 'moview:limit'%}">mypage  </a> &nbsp;|&nbsp;</li>
         <li class="list item_login"><a href="{% url 'common:login' %}">Login  </a></li>
         {% endif %}
     </ul>

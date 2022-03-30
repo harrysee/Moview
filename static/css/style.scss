@@ -156,6 +156,7 @@ nav{
   height: $size_nav_heigth;
   left: 0;
   top: 0;
+  z-index: 10000;
   background-color: $back_color_nav;
   .logo{
     font-size: $size_logo;
@@ -337,7 +338,7 @@ nav{
   @include container;
   justify-content: center;
   align-items: center;
-  margin-top: $margin_top_container;
+  margin-top: 10%;
   header{
     display: flex;
     position: relative;
@@ -357,9 +358,13 @@ nav{
       flex-direction: column;
       justify-content: space-evenly;
       height: 18vh;
+      .info-box{
+        width: 50vw;
+      }
       .info{
         font-size: large;
         padding-top: 10px;
+        width: 20em;
         font-family: $font_ibm_regular;
       }
       .edit-profile{
@@ -402,7 +407,6 @@ nav{
     width: 70%;
     justify-items: start;
     align-items: center;
-    z-index: -1000;
     align-content: start;
     img{
       border-radius: 30px;
