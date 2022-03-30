@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load sass_tags %}
 {% block content %}
+{#<div class="video-box" style=" height: 100%; margin: 0 auto; position: absolute;">#}
+{#    <video autoplay loop muted class="start-container" style="margin:0;position: absolute; top: 0; left: 0; z-index: -10">#}
+{#        <source src="/static/video/opening.mp4" type="video/mp4" style="width: 100%">#}
+{#    </video>#}
+{#</div>#}
 <div class="start-container">
     <div class="splash">
         <img src="/static/images/camera.png" class="start_camera" alt="카메라"/>
@@ -16,7 +21,7 @@
     </div>
 </div>
 <div class="random-box">
-    <p class="random-text">랜덤으로 영화일기를 추천합니다.</p>
+    <p class="random-text">랜덤으로 영화일기를 추천합니다. ->&#9;&#9;&#9;&#9;.</p>
     <a href="{% url 'moview:choose' %}" class="random-a"><img src="/static/images/play.png" class="random-img"/></a>
 </div>
 {% endblock %}

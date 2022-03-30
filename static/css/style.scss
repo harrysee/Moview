@@ -18,7 +18,7 @@ $color_wight:#ffffff;
 $color_blue:#E3EEFF;
 
 $back_color_nav: rgb(142, 152, 189);
-$back_color_gray: rgba(55, 55, 55, 0.8);
+$back_color_gray: rgba(73, 73, 73, 0.66);
 
 $font_ibm_regular : 'IBM Plex Sans Condensed', sans-serif;
 $font_ibm_light : 'IBM Plex Sans KR', sans-serif;
@@ -396,7 +396,7 @@ nav{
   @include container;
   justify-content: center;
   align-items: center;
-  margin-top:5em;
+  margin-top:8em;
   height: inherit;
   padding-bottom: 5em;
   header{
