@@ -27,18 +27,11 @@
                 <input type="password" name="password2" class="input-pwchk" placeholder="비밀번호를 한번 더 확인합니다." value="{{ form.password2.value|default_if_none:'' }}">
             </div>
             <div class="signup-item profile-img" >
-                <label for="file">프로필</label>
-                <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-                <input type="file" id="file" name="profile">       </div>
+                <label for="profile-img">프로필</label>
+                <input type="file" name="profile" id="profile-img" class="upload-hidden" value="" /></div>
             <button type="submit" class="submit">가입하기</button>
         </form>
     </div>
-<script>
-    $("#file").on('change',function(){
-      var fileName = $("#file").val();
-      $(".upload-name").val(fileName);
-    });
-</script>
 </div>
 {% endblock %}
 

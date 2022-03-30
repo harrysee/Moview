@@ -338,7 +338,6 @@ nav{
   @include container;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
   header{
     display: flex;
     position: relative;
@@ -543,7 +542,7 @@ nav{
           display: inline-block;
           padding-top: 6px;
           padding-bottom: 6px;
-          width: 5em;
+          min-width: 5em;
           color: #6a6a6a;
           vertical-align: middle;
           font-family: $font_notosans;

@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200&display=swap');
 $size_loginbox_w :60vh;
 $size_loginbox_h :40%;
-$size_signup_w :60vh;
+$size_signup_w :57vh;
 $size_signup_h :70%;
 
 $radious-box:30px;
@@ -121,6 +121,7 @@ $font_knewave :'Knewave', cursive;
     height: 20vh;
     display: flex;
     flex-direction: column;
+    width: 20vw;
     justify-content: start;
     &:before{
         width: 100vw;
@@ -131,54 +132,49 @@ $font_knewave :'Knewave', cursive;
       margin-bottom: 10px;
       .signup-item{
         width: 25%;
-        margin-right: 45px;
+        margin-right: 30px;
       }
       input{
         flex-shrink: initial;
         padding: 10px;
         border:$color_border solid 1px;
-        width: 75%;
+        width: 80%;
       }
 
     }
     .submit{
         position: relative;
         top: 13px;
+        padding: 7px;
         background-color: white;
         cursor: pointer;
+        margin-top: 3vh;
       }
     .profile-img{
-      .upload-name{
-        display: inline-block;
-        height: 30px;
-        vertical-align: middle;
-        border: 1px solid $color_border;
-        font-size: 12px;
-        width: 60%;
-        margin-left: 13px;
-        color: #999999;
-      }
       label{
-        width: 15%;
         display: inline-block;
-        color: #fff;
-        font-size: 13px;
-        text-align: center;
-        padding:0 10px 0 10px;
-        padding-top: 10px;
-        padding-bottom: -10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        min-width: 5em;
+
+        color: #6a6a6a;
         vertical-align: middle;
-        background-color: #b1b9c6;
+        background-color: #ffffff;
         cursor: pointer;
-        height: 30px;
-        border-radius: 10px;
+        border: 1px solid #575757;
+        text-align: center;
+        border-radius: 5px;
+        margin-right: 1em;
       }
       input[type="file"] {
           position: absolute;
-          width: 0;
-          height: 0;
+          width: 1px;
+          height: 1px;
           padding: 0;
+          margin: -1px;
           overflow: hidden;
+          clip: rect(0,0,0,0);
+          cursor: pointer;
           border: 0;
       }
     }
